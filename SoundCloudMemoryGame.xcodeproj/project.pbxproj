@@ -11,7 +11,6 @@
 		D8389D1B1EA111DE003E1D45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8389D191EA111DE003E1D45 /* Main.storyboard */; };
 		D8389D1D1EA111DE003E1D45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8389D1C1EA111DE003E1D45 /* Assets.xcassets */; };
 		D8389D201EA111DE003E1D45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8389D1E1EA111DE003E1D45 /* LaunchScreen.storyboard */; };
-		D8389D2B1EA111DE003E1D45 /* SoundCloudMemoryGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8389D2A1EA111DE003E1D45 /* SoundCloudMemoryGameTests.swift */; };
 		D84DC0791EA1182F000DE3DE /* cartfile in Resources */ = {isa = PBXBuildFile; fileRef = D84DC0781EA1182F000DE3DE /* cartfile */; };
 		D84DC0871EA119E7000DE3DE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07B1EA11997000DE3DE /* Result.framework */; };
 		D84DC0881EA119E7000DE3DE /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07B1EA11997000DE3DE /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -23,6 +22,17 @@
 		D84DC0921EA119E7000DE3DE /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC0801EA11997000DE3DE /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D84DC0941EA11A2A000DE3DE /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07C1EA11997000DE3DE /* Quick.framework */; };
 		D84DC0951EA11A2A000DE3DE /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07D1EA11997000DE3DE /* Nimble.framework */; };
+		D84DC0981EA11F99000DE3DE /* Gateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0971EA11F99000DE3DE /* Gateway.swift */; };
+		D84DC09A1EA12188000DE3DE /* GatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0991EA12188000DE3DE /* GatewayTests.swift */; };
+		D84DC09C1EA12244000DE3DE /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84DC07C1EA11997000DE3DE /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D84DC09D1EA12244000DE3DE /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84DC07D1EA11997000DE3DE /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D84DC0A01EA1252D000DE3DE /* GatewayMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC09F1EA1252D000DE3DE /* GatewayMocks.swift */; };
+		D84DC0A11EA1304F000DE3DE /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07E1EA11997000DE3DE /* ReactiveCocoa.framework */; };
+		D84DC0A21EA1304F000DE3DE /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07F1EA11997000DE3DE /* ReactiveSwift.framework */; };
+		D84DC0A31EA13058000DE3DE /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84DC07E1EA11997000DE3DE /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D84DC0A41EA13058000DE3DE /* ReactiveSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84DC07F1EA11997000DE3DE /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D84DC0A51EA13058000DE3DE /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84DC0801EA11997000DE3DE /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D84DC0A81EA13446000DE3DE /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0A71EA13446000DE3DE /* Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +60,20 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D84DC09B1EA1223A000DE3DE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D84DC0A31EA13058000DE3DE /* ReactiveCocoa.framework in CopyFiles */,
+				D84DC0A41EA13058000DE3DE /* ReactiveSwift.framework in CopyFiles */,
+				D84DC0A51EA13058000DE3DE /* SwiftyJSON.framework in CopyFiles */,
+				D84DC09C1EA12244000DE3DE /* Quick.framework in CopyFiles */,
+				D84DC09D1EA12244000DE3DE /* Nimble.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +84,6 @@
 		D8389D1F1EA111DE003E1D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8389D211EA111DE003E1D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8389D261EA111DE003E1D45 /* SoundCloudMemoryGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundCloudMemoryGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8389D2A1EA111DE003E1D45 /* SoundCloudMemoryGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundCloudMemoryGameTests.swift; sourceTree = "<group>"; };
 		D8389D2C1EA111DE003E1D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D84DC0781EA1182F000DE3DE /* cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cartfile; sourceTree = SOURCE_ROOT; };
 		D84DC07B1EA11997000DE3DE /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -69,6 +92,10 @@
 		D84DC07E1EA11997000DE3DE /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D84DC07F1EA11997000DE3DE /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D84DC0801EA11997000DE3DE /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		D84DC0971EA11F99000DE3DE /* Gateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gateway.swift; sourceTree = "<group>"; };
+		D84DC0991EA12188000DE3DE /* GatewayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayTests.swift; sourceTree = "<group>"; };
+		D84DC09F1EA1252D000DE3DE /* GatewayMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayMocks.swift; sourceTree = "<group>"; };
+		D84DC0A71EA13446000DE3DE /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84DC0A11EA1304F000DE3DE /* ReactiveCocoa.framework in Frameworks */,
+				D84DC0A21EA1304F000DE3DE /* ReactiveSwift.framework in Frameworks */,
 				D84DC0941EA11A2A000DE3DE /* Quick.framework in Frameworks */,
 				D84DC0951EA11A2A000DE3DE /* Nimble.framework in Frameworks */,
 			);
@@ -101,8 +130,8 @@
 				D8389D141EA111DE003E1D45 /* SoundCloudMemoryGame */,
 				D8389D291EA111DE003E1D45 /* SoundCloudMemoryGameTests */,
 				D8389D131EA111DE003E1D45 /* Products */,
-				D84DC0781EA1182F000DE3DE /* cartfile */,
 				D84DC07A1EA11997000DE3DE /* Frameworks */,
+				D84DC0781EA1182F000DE3DE /* cartfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +147,8 @@
 		D8389D141EA111DE003E1D45 /* SoundCloudMemoryGame */ = {
 			isa = PBXGroup;
 			children = (
+				D84DC0A61EA1343B000DE3DE /* Errors */,
+				D84DC0961EA11F55000DE3DE /* Networking */,
 				D8389D151EA111DE003E1D45 /* AppDelegate.swift */,
 				D8389D191EA111DE003E1D45 /* Main.storyboard */,
 				D8389D1C1EA111DE003E1D45 /* Assets.xcassets */,
@@ -130,7 +161,6 @@
 		D8389D291EA111DE003E1D45 /* SoundCloudMemoryGameTests */ = {
 			isa = PBXGroup;
 			children = (
-				D8389D2A1EA111DE003E1D45 /* SoundCloudMemoryGameTests.swift */,
 				D8389D2C1EA111DE003E1D45 /* Info.plist */,
 			);
 			path = SoundCloudMemoryGameTests;
@@ -147,6 +177,32 @@
 				D84DC0801EA11997000DE3DE /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D84DC0961EA11F55000DE3DE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC09E1EA123C2000DE3DE /* Gateway */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		D84DC09E1EA123C2000DE3DE /* Gateway */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0971EA11F99000DE3DE /* Gateway.swift */,
+				D84DC0991EA12188000DE3DE /* GatewayTests.swift */,
+				D84DC09F1EA1252D000DE3DE /* GatewayMocks.swift */,
+			);
+			name = Gateway;
+			sourceTree = "<group>";
+		};
+		D84DC0A61EA1343B000DE3DE /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0A71EA13446000DE3DE /* Errors.swift */,
+			);
+			name = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +233,7 @@
 				D8389D221EA111DE003E1D45 /* Sources */,
 				D8389D231EA111DE003E1D45 /* Frameworks */,
 				D8389D241EA111DE003E1D45 /* Resources */,
+				D84DC09B1EA1223A000DE3DE /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -256,6 +313,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84DC0A81EA13446000DE3DE /* Errors.swift in Sources */,
+				D84DC0A01EA1252D000DE3DE /* GatewayMocks.swift in Sources */,
+				D84DC0981EA11F99000DE3DE /* Gateway.swift in Sources */,
 				D8389D161EA111DE003E1D45 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,7 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8389D2B1EA111DE003E1D45 /* SoundCloudMemoryGameTests.swift in Sources */,
+				D84DC09A1EA12188000DE3DE /* GatewayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -384,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -397,6 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = X53G3KMVA6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -415,6 +476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = X53G3KMVA6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
