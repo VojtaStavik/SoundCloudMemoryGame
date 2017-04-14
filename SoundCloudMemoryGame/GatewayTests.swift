@@ -50,7 +50,7 @@ class GatewayTests: QuickSpec {
                 
                 
                 context("when response is sucessfull but data are not a valid JSON") {
-                    var responseError: SoundCloudMemoryGame.Error.Gateway?
+                    var responseError: SoundCloudMemoryGame.Error?
                     
                     beforeEach {
                         // Simulate successfull response but invalid JSON
@@ -67,13 +67,13 @@ class GatewayTests: QuickSpec {
                     }
                     
                     it("should return invalidJSON error") {
-                        expect(responseError).toEventually(equal(Error.Gateway.invalidJSON))
+                        expect(responseError).toEventually(equal(Error.gateway(.invalidJSON)))
                     }
                 }
 
                 
                 context("when response is not successfull") {
-                    var responseError: SoundCloudMemoryGame.Error.Gateway?
+                    var responseError: SoundCloudMemoryGame.Error?
                     
                     beforeEach {
                         // Simulate error response
@@ -98,7 +98,7 @@ class GatewayTests: QuickSpec {
 
                 
                 context("when response is not successfull and error response is empty") {
-                    var responseError: SoundCloudMemoryGame.Error.Gateway?
+                    var responseError: SoundCloudMemoryGame.Error?
                     
                     beforeEach {
                         // Simulate error response
@@ -116,7 +116,7 @@ class GatewayTests: QuickSpec {
                     }
                     
                     it("should return unknown error") {
-                        expect(responseError).toEventually(equal(SoundCloudMemoryGame.Error.Gateway.unknown))
+                        expect(responseError).toEventually(equal(SoundCloudMemoryGame.Error.gateway(.unknown)))
                     }
                 }
 

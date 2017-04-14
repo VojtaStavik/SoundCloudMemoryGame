@@ -1,5 +1,39 @@
 
 import Foundation
+import ReactiveSwift
+import SwiftyJSON
+
+// MARK: --=== Gateway mock ==---
+
+class GatewayMock: Gateway {
+    
+    convenience init() {
+        self.init(session: URLSessionMock(configuration: .default))
+    }
+    
+    required init(session: URLSessionProtocol) { }
+    
+    var url: URL?
+    var method: GatewayMethod?
+
+    var responseJSON: JSON?
+    var responseError: Error?
+    
+    func call(url: URL, method: GatewayMethod) -> SignalProducer<JSON, Error> {
+        self.url = url
+        self.method = method
+        
+        return SignalProducer { observer, _ in
+            if let json = self.responseJSON {
+                observer.send(value: json)
+                observer.sendCompleted()
+            } else if let error = self.responseError {
+                observer.send(error: error)
+            }
+        }
+    }
+}
+
 
 // MARK: --=== URLSession and URLDataTask mocks ==---
 

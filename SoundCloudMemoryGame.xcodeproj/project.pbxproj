@@ -33,6 +33,9 @@
 		D84DC0A41EA13058000DE3DE /* ReactiveSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84DC07F1EA11997000DE3DE /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D84DC0A51EA13058000DE3DE /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84DC0801EA11997000DE3DE /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D84DC0A81EA13446000DE3DE /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0A71EA13446000DE3DE /* Errors.swift */; };
+		D84DC0AB1EA143DE000DE3DE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0AA1EA143DE000DE3DE /* API.swift */; };
+		D84DC0AD1EA14B50000DE3DE /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0AC1EA14B50000DE3DE /* APITests.swift */; };
+		D84DC0AF1EA15020000DE3DE /* apiMockResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D84DC0AE1EA15020000DE3DE /* apiMockResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +99,9 @@
 		D84DC0991EA12188000DE3DE /* GatewayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayTests.swift; sourceTree = "<group>"; };
 		D84DC09F1EA1252D000DE3DE /* GatewayMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayMocks.swift; sourceTree = "<group>"; };
 		D84DC0A71EA13446000DE3DE /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		D84DC0AA1EA143DE000DE3DE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		D84DC0AC1EA14B50000DE3DE /* APITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITests.swift; sourceTree = "<group>"; };
+		D84DC0AE1EA15020000DE3DE /* apiMockResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = apiMockResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,7 @@
 		D8389D291EA111DE003E1D45 /* SoundCloudMemoryGameTests */ = {
 			isa = PBXGroup;
 			children = (
+				D84DC0AE1EA15020000DE3DE /* apiMockResponse.json */,
 				D8389D2C1EA111DE003E1D45 /* Info.plist */,
 			);
 			path = SoundCloudMemoryGameTests;
@@ -182,6 +189,7 @@
 		D84DC0961EA11F55000DE3DE /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D84DC0A91EA143C5000DE3DE /* API */,
 				D84DC09E1EA123C2000DE3DE /* Gateway */,
 			);
 			name = Networking;
@@ -203,6 +211,15 @@
 				D84DC0A71EA13446000DE3DE /* Errors.swift */,
 			);
 			name = Errors;
+			sourceTree = "<group>";
+		};
+		D84DC0A91EA143C5000DE3DE /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0AA1EA143DE000DE3DE /* API.swift */,
+				D84DC0AC1EA14B50000DE3DE /* APITests.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84DC0AF1EA15020000DE3DE /* apiMockResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +335,7 @@
 				D84DC0A01EA1252D000DE3DE /* GatewayMocks.swift in Sources */,
 				D84DC0981EA11F99000DE3DE /* Gateway.swift in Sources */,
 				D8389D161EA111DE003E1D45 /* AppDelegate.swift in Sources */,
+				D84DC0AB1EA143DE000DE3DE /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84DC0AD1EA14B50000DE3DE /* APITests.swift in Sources */,
 				D84DC09A1EA12188000DE3DE /* GatewayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

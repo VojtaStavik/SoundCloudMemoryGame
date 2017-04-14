@@ -5,7 +5,7 @@ import SwiftyJSON
 
 protocol Gateway {
     init(session: URLSessionProtocol)
-    func call(url: URL, method: GatewayMethod) -> SignalProducer<JSON, Error.Gateway>
+    func call(url: URL, method: GatewayMethod) -> SignalProducer<JSON, Error>
 }
 
 enum GatewayMethod: String {
@@ -34,7 +34,7 @@ struct SCGateway: Gateway {
     }
     
     /// Executes call with provided URL and HTTP method.
-    func call(url: URL, method: GatewayMethod) -> SignalProducer<JSON, Error.Gateway> {
+    func call(url: URL, method: GatewayMethod) -> SignalProducer<JSON, Error> {
         
         return SignalProducer { (observer, _) in
         
@@ -45,9 +45,9 @@ struct SCGateway: Gateway {
                 guard let data = data else {
                     if let description = error?.localizedDescription {
                         // Next step would be to provide custom, more friendly messages for the most common errors.
-                        observer.send(error: Error.Gateway.network(description: description))
+                        observer.send(error: .gateway(.network(description: description)))
                     } else {
-                        observer.send(error: .unknown)
+                        observer.send(error: .gateway(.unknown))
                     }
                     return
                 }
@@ -56,9 +56,10 @@ struct SCGateway: Gateway {
                 let json = JSON(data: data, error: &error)
                 
                 if error != nil{
-                    observer.send(error: .invalidJSON)
+                    observer.send(error: .gateway(.invalidJSON))
                 } else {
                     observer.send(value: json)
+                    observer.sendCompleted()
                 }
                 
             }.resume()
