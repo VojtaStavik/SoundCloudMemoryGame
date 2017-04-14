@@ -1,0 +1,4 @@
+github "ReactiveCocoa/ReactiveCocoa" ~> 5.0
+github "Quick/Quick"
+github "Quick/Nimble"
+github "SwiftyJSON/SwiftyJSON"

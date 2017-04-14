@@ -8,11 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		D8389D161EA111DE003E1D45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8389D151EA111DE003E1D45 /* AppDelegate.swift */; };
-		D8389D181EA111DE003E1D45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8389D171EA111DE003E1D45 /* ViewController.swift */; };
 		D8389D1B1EA111DE003E1D45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8389D191EA111DE003E1D45 /* Main.storyboard */; };
 		D8389D1D1EA111DE003E1D45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8389D1C1EA111DE003E1D45 /* Assets.xcassets */; };
 		D8389D201EA111DE003E1D45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8389D1E1EA111DE003E1D45 /* LaunchScreen.storyboard */; };
 		D8389D2B1EA111DE003E1D45 /* SoundCloudMemoryGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8389D2A1EA111DE003E1D45 /* SoundCloudMemoryGameTests.swift */; };
+		D84DC0791EA1182F000DE3DE /* cartfile in Resources */ = {isa = PBXBuildFile; fileRef = D84DC0781EA1182F000DE3DE /* cartfile */; };
+		D84DC0871EA119E7000DE3DE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07B1EA11997000DE3DE /* Result.framework */; };
+		D84DC0881EA119E7000DE3DE /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07B1EA11997000DE3DE /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D84DC08D1EA119E7000DE3DE /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07E1EA11997000DE3DE /* ReactiveCocoa.framework */; };
+		D84DC08E1EA119E7000DE3DE /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07E1EA11997000DE3DE /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D84DC08F1EA119E7000DE3DE /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07F1EA11997000DE3DE /* ReactiveSwift.framework */; };
+		D84DC0901EA119E7000DE3DE /* ReactiveSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07F1EA11997000DE3DE /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D84DC0911EA119E7000DE3DE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC0801EA11997000DE3DE /* SwiftyJSON.framework */; };
+		D84DC0921EA119E7000DE3DE /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC0801EA11997000DE3DE /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D84DC0941EA11A2A000DE3DE /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07C1EA11997000DE3DE /* Quick.framework */; };
+		D84DC0951EA11A2A000DE3DE /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07D1EA11997000DE3DE /* Nimble.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,10 +35,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D84DC0931EA119E8000DE3DE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D84DC0921EA119E7000DE3DE /* SwiftyJSON.framework in Embed Frameworks */,
+				D84DC0901EA119E7000DE3DE /* ReactiveSwift.framework in Embed Frameworks */,
+				D84DC0881EA119E7000DE3DE /* Result.framework in Embed Frameworks */,
+				D84DC08E1EA119E7000DE3DE /* ReactiveCocoa.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		D8389D121EA111DE003E1D45 /* SoundCloudMemoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundCloudMemoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8389D151EA111DE003E1D45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D8389D171EA111DE003E1D45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D8389D1A1EA111DE003E1D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8389D1C1EA111DE003E1D45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8389D1F1EA111DE003E1D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +62,13 @@
 		D8389D261EA111DE003E1D45 /* SoundCloudMemoryGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundCloudMemoryGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8389D2A1EA111DE003E1D45 /* SoundCloudMemoryGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundCloudMemoryGameTests.swift; sourceTree = "<group>"; };
 		D8389D2C1EA111DE003E1D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D84DC0781EA1182F000DE3DE /* cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cartfile; sourceTree = SOURCE_ROOT; };
+		D84DC07B1EA11997000DE3DE /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		D84DC07C1EA11997000DE3DE /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		D84DC07D1EA11997000DE3DE /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		D84DC07E1EA11997000DE3DE /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		D84DC07F1EA11997000DE3DE /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
+		D84DC0801EA11997000DE3DE /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84DC0911EA119E7000DE3DE /* SwiftyJSON.framework in Frameworks */,
+				D84DC08F1EA119E7000DE3DE /* ReactiveSwift.framework in Frameworks */,
+				D84DC0871EA119E7000DE3DE /* Result.framework in Frameworks */,
+				D84DC08D1EA119E7000DE3DE /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84DC0941EA11A2A000DE3DE /* Quick.framework in Frameworks */,
+				D84DC0951EA11A2A000DE3DE /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +101,8 @@
 				D8389D141EA111DE003E1D45 /* SoundCloudMemoryGame */,
 				D8389D291EA111DE003E1D45 /* SoundCloudMemoryGameTests */,
 				D8389D131EA111DE003E1D45 /* Products */,
+				D84DC0781EA1182F000DE3DE /* cartfile */,
+				D84DC07A1EA11997000DE3DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				D8389D151EA111DE003E1D45 /* AppDelegate.swift */,
-				D8389D171EA111DE003E1D45 /* ViewController.swift */,
 				D8389D191EA111DE003E1D45 /* Main.storyboard */,
 				D8389D1C1EA111DE003E1D45 /* Assets.xcassets */,
 				D8389D1E1EA111DE003E1D45 /* LaunchScreen.storyboard */,
@@ -96,6 +136,19 @@
 			path = SoundCloudMemoryGameTests;
 			sourceTree = "<group>";
 		};
+		D84DC07A1EA11997000DE3DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC07B1EA11997000DE3DE /* Result.framework */,
+				D84DC07C1EA11997000DE3DE /* Quick.framework */,
+				D84DC07D1EA11997000DE3DE /* Nimble.framework */,
+				D84DC07E1EA11997000DE3DE /* ReactiveCocoa.framework */,
+				D84DC07F1EA11997000DE3DE /* ReactiveSwift.framework */,
+				D84DC0801EA11997000DE3DE /* SwiftyJSON.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,6 +159,7 @@
 				D8389D0E1EA111DE003E1D45 /* Sources */,
 				D8389D0F1EA111DE003E1D45 /* Frameworks */,
 				D8389D101EA111DE003E1D45 /* Resources */,
+				D84DC0931EA119E8000DE3DE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -183,6 +237,7 @@
 			files = (
 				D8389D201EA111DE003E1D45 /* LaunchScreen.storyboard in Resources */,
 				D8389D1D1EA111DE003E1D45 /* Assets.xcassets in Resources */,
+				D84DC0791EA1182F000DE3DE /* cartfile in Resources */,
 				D8389D1B1EA111DE003E1D45 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,7 +256,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8389D181EA111DE003E1D45 /* ViewController.swift in Sources */,
 				D8389D161EA111DE003E1D45 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,7 +398,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X53G3KMVA6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SoundCloudMemoryGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VojtaStavik.SoundCloudMemoryGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -357,7 +416,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X53G3KMVA6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SoundCloudMemoryGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VojtaStavik.SoundCloudMemoryGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -371,6 +435,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = X53G3KMVA6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SoundCloudMemoryGameTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VojtaStavik.SoundCloudMemoryGameTests;
@@ -386,6 +454,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = X53G3KMVA6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SoundCloudMemoryGameTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VojtaStavik.SoundCloudMemoryGameTests;
@@ -414,6 +486,7 @@
 				D8389D311EA111DE003E1D45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8389D321EA111DE003E1D45 /* Build configuration list for PBXNativeTarget "SoundCloudMemoryGameTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +495,7 @@
 				D8389D341EA111DE003E1D45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
