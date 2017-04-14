@@ -21,6 +21,8 @@ class APITests: QuickSpec {
                 api = SCAPI(gateway: gateway)
             }
             
+            // MARK: --=== getImagesURLs ==---
+            
             describe("getImagesURLs") {
 
                 beforeEach {
@@ -28,7 +30,7 @@ class APITests: QuickSpec {
                 }
                 
                 it("should call Gateway with correct URL") {
-                    expect(gateway.url).to(equal(URL(string: "https://api.soundcloud.com/playlists/79670980?client_id=aa45989bb0c262788e2d11f1ea041b65")))
+                    expect(gateway.calledURLs).to(equal([URL(string: "https://api.soundcloud.com/playlists/79670980?client_id=aa45989bb0c262788e2d11f1ea041b65")!]))
                 }
                 
                 
@@ -98,7 +100,69 @@ class APITests: QuickSpec {
                 }
                 
             }
+            
+            // MARK: --=== downloadImages ==---
+            
+            describe("downloadImages") {
                 
+                let mockImage1 = UIImage(named: "ringo.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!
+                let mockImage2 = UIImage(named: "paul.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!
+                
+                var imageStore: ImageStore?
+                
+                beforeEach {
+                    // Prepare mock response
+                    gateway.responseDataForURL[URL(string: "first://")!] = UIImagePNGRepresentation(mockImage1)!
+                    gateway.responseDataForURL[URL(string: "second://")!] = UIImagePNGRepresentation(mockImage2)!
+                    
+                    // Make the call
+                    api.downloadImages(urls: [URL(string: "first://")!, URL(string: "second://")!])
+                        .startWithResult { (result) in
+                            if case let .success(store) = result {
+                                imageStore = store
+                            }
+                        }
+                }
+                
+                it("should call Gateway with correct URLs") {
+                    let correctURLs: Set<URL> = [URL(string: "first://")!, URL(string: "second://")!]
+                    expect(gateway.calledURLs).to(equal(correctURLs))
+                }
+                
+                it("should create new ImageStore with downloaded images") {
+                    expect(imageStore?.count).toEventually(equal(2))
+                    expect(imageStore?["first://"]?.isTheSame(as: mockImage1)).toEventually(beTrue())
+                    expect(imageStore?["second://"]?.isTheSame(as: mockImage2)).toEventually(beTrue())
+                }
+                
+                
+                context("when not all images are succesfully downloaded") {
+                
+                    var responseError: SoundCloudMemoryGame.Error?
+                    
+                    beforeEach {
+                        // Prepare mock response (response for "second" url is missing)
+                        gateway.responseDataForURL = [URL(string: "first://")!: UIImagePNGRepresentation(mockImage1)!]
+                        gateway.responseError = .gateway(.unknown)
+                        gateway.responseData = nil
+                        
+                        // Make the call
+                        api.downloadImages(urls: [URL(string: "first://")!, URL(string: "second://")!])
+                            .startWithResult { (result) in
+                                if case let .failure(error) = result {
+                                    responseError = error
+                                }
+                        }
+                    }
+                    
+                    fit("should return canDonwloadImage error") {
+                        expect(responseError).toEventually(equal(.api(.cantDownloadImages)))
+                    }
+                    
+
+                }
+            }
+            
         }
     }
     
@@ -108,5 +172,11 @@ class APITests: QuickSpec {
         let jsonData = try! Data(contentsOf: url)
         return JSON(data: jsonData)
     }()
-    
+}
+
+extension UIImage {
+    /// Helper function to compare UIImages on the data level
+    func isTheSame(as other: UIImage) -> Bool {
+        return UIImagePNGRepresentation(self) == UIImagePNGRepresentation(other)
+    }
 }

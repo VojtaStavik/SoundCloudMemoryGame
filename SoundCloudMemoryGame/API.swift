@@ -8,6 +8,7 @@ import Result
 protocol API {
     init(gateway: Gateway)
     func getImagesURLs(count: Int) -> SignalProducer<[URL], Error>
+    func downloadImages(urls: [URL]) -> SignalProducer<ImageStore, Error>
 }
 
 /// Concrete implementation for SoundCloud API
@@ -19,10 +20,22 @@ struct SCAPI: API {
         self.gateway = gateway
     }
     
+    /// Fetches URLs of available images
     func getImagesURLs(count: Int) -> SignalProducer<[URL], Error> {
         return gateway
             .call(url: soundCloudAPIURL, method: .get)
             .attemptMap(parse(count))
+    }
+    
+    /// Downloads images and creates a new ImageStore with them
+    func downloadImages(urls: [URL]) -> SignalProducer<ImageStore, Error> {
+        let singleImageDownloadProducers = urls.map(downloadImage)
+        let combinedProducer = SignalProducer<SignalProducer<ImageStore, Error>, Error>(singleImageDownloadProducers)
+        
+        return combinedProducer
+            .flatten(.concat)
+            .reduce(ImageStore(), +)
+            .mapError { _ in return .api(.cantDownloadImages) }
     }
     
     // MARK: --=== Private ==---
@@ -30,6 +43,7 @@ struct SCAPI: API {
     fileprivate let gateway: Gateway
     
     fileprivate let soundCloudAPIURL = URL(string: "https://api.soundcloud.com/playlists/79670980?client_id=aa45989bb0c262788e2d11f1ea041b65")!
+    
     
     /// Parses response JSON to array of image to <count> URLs
     fileprivate func parse(_ count: Int) -> (JSON) -> Result<[URL], Error> {
@@ -55,5 +69,18 @@ struct SCAPI: API {
             
             return .success(Array(urls))
         }
+    }
+    
+    /// Downloads a single image and creates a new ImageStore with it.
+    fileprivate func downloadImage(url: URL) -> SignalProducer<ImageStore, Error> {
+        return gateway
+            .call(url: url, method: .get)
+            .attemptMap { (data) -> Result<ImageStore, Error> in
+                if let image = UIImage(data: data) {
+                    return .success([ImageID(url.absoluteString): image])
+                } else {
+                    return .failure(.api(.cantDownloadImages))
+                }
+            }
     }
 }

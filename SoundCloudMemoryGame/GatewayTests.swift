@@ -5,6 +5,7 @@ import Foundation
 import Quick
 import Nimble
 import SwiftyJSON
+import Result
 
 class GatewayTests: QuickSpec {
     override func spec(){
@@ -36,7 +37,7 @@ class GatewayTests: QuickSpec {
                         // Make the call
                         gateway
                             .call(url: URL(string: "http://mock")!, method: .get)
-                            .startWithResult { (result) in
+                            .startWithResult { (result: Result<JSON, SoundCloudMemoryGame.Error>) in
                                 if case let .success(json) = result {
                                     responseJSON = json
                                 }
@@ -59,7 +60,7 @@ class GatewayTests: QuickSpec {
                         // Make the call
                         gateway
                             .call(url: URL(string: "http://mock")!, method: .get)
-                            .startWithResult { (result) in
+                            .startWithResult { (result: Result<JSON, SoundCloudMemoryGame.Error>) in
                                 if case let .failure(error) = result {
                                     responseError = error
                                 }
@@ -84,7 +85,7 @@ class GatewayTests: QuickSpec {
                         // Make the call
                         gateway
                             .call(url: URL(string: "http://mock")!, method: .get)
-                            .startWithResult { (result) in
+                            .startWithResult { (result: Result<JSON, SoundCloudMemoryGame.Error>) in
                                 if case let .failure(error) = result {
                                     responseError = error
                                 }
@@ -108,7 +109,7 @@ class GatewayTests: QuickSpec {
                         // Make the call
                         gateway
                             .call(url: URL(string: "http://mock")!, method: .get)
-                            .startWithResult { (result) in
+                            .startWithResult { (result: Result<JSON, SoundCloudMemoryGame.Error>) in
                                 if case let .failure(error) = result {
                                     responseError = error
                                 }

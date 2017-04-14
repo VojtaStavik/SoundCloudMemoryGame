@@ -2,10 +2,29 @@
 import Foundation
 import ReactiveSwift
 import SwiftyJSON
+import Result
 
 protocol Gateway {
     init(session: URLSessionProtocol)
-    func call(url: URL, method: GatewayMethod) -> SignalProducer<JSON, Error>
+    func call(url: URL, method: GatewayMethod) -> SignalProducer<Data, Error>
+}
+
+extension Gateway {
+    
+    /// Convenience function whitch tries to parse the returning data to JSON
+    func call(url: URL, method: GatewayMethod) -> SignalProducer<JSON, Error> {
+        return call(url: url, method: method).attemptMap { (data) -> Result<JSON, Error> in
+            
+            var error: NSError?
+            let json = JSON(data: data, error: &error)
+            
+            if error != nil{
+                return .failure(.gateway(.invalidJSON))
+            } else {
+                return .success(json)
+            }
+        }
+    }
 }
 
 enum GatewayMethod: String {
@@ -34,7 +53,7 @@ struct SCGateway: Gateway {
     }
     
     /// Executes call with provided URL and HTTP method.
-    func call(url: URL, method: GatewayMethod) -> SignalProducer<JSON, Error> {
+    func call(url: URL, method: GatewayMethod) -> SignalProducer<Data, Error> {
         
         return SignalProducer { (observer, _) in
         
@@ -51,16 +70,9 @@ struct SCGateway: Gateway {
                     }
                     return
                 }
-
-                var error: NSError?
-                let json = JSON(data: data, error: &error)
                 
-                if error != nil{
-                    observer.send(error: .gateway(.invalidJSON))
-                } else {
-                    observer.send(value: json)
-                    observer.sendCompleted()
-                }
+                observer.send(value: data)
+                observer.sendCompleted()
                 
             }.resume()
         }

@@ -13,6 +13,7 @@ enum Error: Swift.Error {
     case api(APIError)
     enum APIError {
         case notEnoughImages
+        case cantDownloadImages
     }
 }
 
@@ -29,6 +30,8 @@ extension Error {
         // API
         case .api(.notEnoughImages):
             return NSLocalizedString("Not enough images. Try to select less cards.", comment: "Not enought images error message")
+        case .api(.cantDownloadImages):
+            return NSLocalizedString("Can't download all images. Try again later or try to select less cards.", comment: "Can't download all images error message")
         
             
         default:

@@ -1,4 +1,6 @@
 
+@testable import SoundCloudMemoryGame
+
 import Foundation
 import ReactiveSwift
 import SwiftyJSON
@@ -13,20 +15,36 @@ class GatewayMock: Gateway {
     
     required init(session: URLSessionProtocol) { }
     
-    var url: URL?
+    var calledURLs = Set<URL>()
     var method: GatewayMethod?
 
     var responseJSON: JSON?
-    var responseError: Error?
+    var responseData: Data?
+    var responseError: SoundCloudMemoryGame.Error?
     
-    func call(url: URL, method: GatewayMethod) -> SignalProducer<JSON, Error> {
-        self.url = url
+    var responseDataForURL = [URL: Data]()
+    
+    func call(url: URL, method: GatewayMethod) -> SignalProducer<Data, SoundCloudMemoryGame.Error> {
+        calledURLs.insert(url)
         self.method = method
         
         return SignalProducer { observer, _ in
-            if let json = self.responseJSON {
-                observer.send(value: json)
+            
+            // Is there specific mock response for this URL?
+            if let data = self.responseDataForURL[url] {
+                observer.send(value: data)
                 observer.sendCompleted()
+                return
+            }
+            
+            if let json = self.responseJSON {
+                observer.send(value: try! json.rawData())
+                observer.sendCompleted()
+                
+            } else if let data = self.responseData {
+                observer.send(value: data)
+                observer.sendCompleted()
+            
             } else if let error = self.responseError {
                 observer.send(error: error)
             }
