@@ -57,6 +57,8 @@
 		D84DC10B1EA27167000DE3DE /* GameVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC10A1EA27167000DE3DE /* GameVMTests.swift */; };
 		D84DC10E1EA273F6000DE3DE /* CollectionShuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC10D1EA273F6000DE3DE /* CollectionShuffle.swift */; };
 		D84DC1111EA27C13000DE3DE /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1101EA27C13000DE3DE /* CardTests.swift */; };
+		D84DC1141EA297AC000DE3DE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1131EA297AC000DE3DE /* CardView.swift */; };
+		D84DC1161EA2A0B0000DE3DE /* PinToSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1151EA2A0B0000DE3DE /* PinToSuperview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +147,8 @@
 		D84DC10A1EA27167000DE3DE /* GameVMTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVMTests.swift; sourceTree = "<group>"; };
 		D84DC10D1EA273F6000DE3DE /* CollectionShuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionShuffle.swift; sourceTree = "<group>"; };
 		D84DC1101EA27C13000DE3DE /* CardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
+		D84DC1131EA297AC000DE3DE /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		D84DC1151EA2A0B0000DE3DE /* PinToSuperview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinToSuperview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +205,6 @@
 				D84DC0DA1EA16D51000DE3DE /* paul.jpg */,
 				D84DC0DB1EA16D51000DE3DE /* ringo.jpg */,
 			);
-			name = TestResources;
 			path = TestResources;
 			sourceTree = "<group>";
 		};
@@ -360,6 +363,7 @@
 		D84DC1011EA26BD2000DE3DE /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				D84DC1121EA29793000DE3DE /* Views */,
 				D84DC1041EA26C90000DE3DE /* ViewController */,
 				D84DC1071EA26F9A000DE3DE /* ViewModel */,
 			);
@@ -387,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				D84DC10D1EA273F6000DE3DE /* CollectionShuffle.swift */,
+				D84DC1151EA2A0B0000DE3DE /* PinToSuperview.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -398,6 +403,15 @@
 				D84DC1101EA27C13000DE3DE /* CardTests.swift */,
 			);
 			path = Card;
+			sourceTree = "<group>";
+		};
+		D84DC1121EA29793000DE3DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC1131EA297AC000DE3DE /* CardView.swift */,
+			);
+			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -515,12 +529,14 @@
 				D84DC0F71EA25441000DE3DE /* Colors.swift in Sources */,
 				D84DC0DF1EA17D04000DE3DE /* GameSetupVC.swift in Sources */,
 				D84DC0D11EA1624E000DE3DE /* API.swift in Sources */,
+				D84DC1161EA2A0B0000DE3DE /* PinToSuperview.swift in Sources */,
 				D84DC1031EA26C8C000DE3DE /* GameVC.swift in Sources */,
 				D84DC1001EA25F85000DE3DE /* MainAppFlow.swift in Sources */,
 				D84DC0D41EA16278000DE3DE /* Errors.swift in Sources */,
 				D84DC0D51EA16278000DE3DE /* Gateway.swift in Sources */,
 				D84DC0D61EA162EF000DE3DE /* AppDelegate.swift in Sources */,
 				D84DC0FB1EA258C4000DE3DE /* main.swift in Sources */,
+				D84DC1141EA297AC000DE3DE /* CardView.swift in Sources */,
 				D84DC0D01EA1615C000DE3DE /* ImageStore.swift in Sources */,
 				D84DC10E1EA273F6000DE3DE /* CollectionShuffle.swift in Sources */,
 				D84DC0E31EA21F90000DE3DE /* GameSetupVM.swift in Sources */,

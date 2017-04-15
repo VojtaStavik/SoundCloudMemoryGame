@@ -8,7 +8,7 @@ class Card {
     
     enum State {
         case regular
-        case flipped(id: ImageID, image: UIImage)
+        case flipped
     }
     
     init(id: ImageID, image: UIImage) {
@@ -18,7 +18,7 @@ class Card {
     
     func flip() {
         if case .regular = state.value {
-            _state.value = .flipped(id: self.id, image: self.image)
+            _state.value = .flipped
         }
     }
     
@@ -34,8 +34,8 @@ class Card {
     
     fileprivate let _state: MutableProperty<State> = MutableProperty(.regular)
     
-    fileprivate let image: UIImage
-    fileprivate let id: ImageID
+    let image: UIImage
+    let id: ImageID
 }
 
 extension Card {
@@ -48,24 +48,8 @@ extension Card {
     }
 }
 
-extension Card: Equatable {
-    static func == (l: Card, r: Card) -> Bool {
-        return l.id == r.id
-    }
-}
-
-extension Card.State: Equatable {
-    
-    static func == (l: Card.State, r: Card.State) -> Bool {
-        switch (l, r) {
-        case (.regular, .regular):
-            return true
-            
-        case let (.flipped(lImage), .flipped(rImage)):
-            return lImage == rImage
-            
-        default:
-            return false
-        }
+extension Card {
+    func  matches(_ otherCard: Card) -> Bool {
+        return self.id == otherCard.id
     }
 }

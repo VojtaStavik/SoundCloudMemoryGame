@@ -85,12 +85,26 @@
                     <view key="view" contentMode="scaleToFill" id="ciA-fy-pTe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wQh-IY-532">
+                                <rect key="frame" x="16" y="36" width="343" height="615"/>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wQh-IY-532" firstAttribute="top" secondItem="5Op-Uq-mca" secondAttribute="bottom" constant="16" id="bE3-jF-0oV"/>
+                            <constraint firstItem="wQh-IY-532" firstAttribute="leading" secondItem="ciA-fy-pTe" secondAttribute="leading" constant="16" id="jkZ-xi-IKr"/>
+                            <constraint firstAttribute="trailing" secondItem="wQh-IY-532" secondAttribute="trailing" constant="16" id="ndK-Lg-dRG"/>
+                            <constraint firstItem="uJT-WQ-cD4" firstAttribute="top" secondItem="wQh-IY-532" secondAttribute="bottom" constant="16" id="rtE-vg-Els"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainStackView" destination="wQh-IY-532" id="d2U-ha-WDV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GPO-xD-UWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="-87"/>
+            <point key="canvasLocation" x="248.80000000000001" y="-87.706146926536732"/>
         </scene>
     </scenes>
     <resources>

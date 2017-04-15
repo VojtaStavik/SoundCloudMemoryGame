@@ -4,7 +4,10 @@ import ReactiveSwift
 
 class GameVM {
     
+    // The delay before resetting the cards after wrong move
     let wrongMoveResetDelay: TimeInterval = 0.5
+    
+    // The delay after match
     let matchDelay: TimeInterval = 0.5
     
     
@@ -57,9 +60,9 @@ class GameVM {
         case finished
     }
    
-    var state: GameState = .regular
+    private(set) var state: GameState = .regular
     
-    func updateGameState(with card: Card) {
+    private func updateGameState(with card: Card) {
         switch state {
         case .regular:
             card.flip()
@@ -76,9 +79,9 @@ class GameVM {
         }
     }
     
-    func resolveMatch(card1: Card, card2: Card) {
+    private func resolveMatch(card1: Card, card2: Card) {
         
-        if card1 == card2 {
+        if card1.matches(card2) {
             card1.animateMatch?(matchDelay)
             card2.animateMatch?(matchDelay)
             DispatchQueue.main.asyncAfter(deadline: .now() + matchDelay) {
@@ -93,13 +96,13 @@ class GameVM {
         }
     }
     
-    func resetCards(card1: Card, card2: Card) {
+    private func resetCards(card1: Card, card2: Card) {
         card1.reset()
         card2.reset()
         state = .regular
     }
     
-    func checkIfFinished() {
+    private func checkIfFinished() {
         let unflippedCards = gamePlan.flatMap{ $0 }.filter{ $0.isFlipped == false }
         
         if unflippedCards.isEmpty {
@@ -123,7 +126,7 @@ extension GameVM.GameState: Equatable {
             return true
             
         case let (.moveInProgress(leftCard), .moveInProgress(rightCard)):
-            return leftCard == rightCard
+            return leftCard === rightCard
         
         default:
             return false

@@ -7,6 +7,8 @@ class MainAppFlow {
     private let window: UIWindow
     private let navigationController: UINavigationController
     
+    private let gameSettings = SCGameSettings()
+    
     init(window: UIWindow) {
         self.window = window
         navigationController = UINavigationController()
@@ -19,7 +21,7 @@ class MainAppFlow {
         
         gameSetupVC.viewModel.state.producer
             .observe(on: UIScheduler())
-            .startWithValues { [unowned self] (state) in
+            .startWithValues { [unowned self, unowned gameSetupVC] (state) in
                 if case let .imagesReady(imageStore) = state {
                     self.showGameVC(imageStore: imageStore)
                 }
@@ -29,7 +31,7 @@ class MainAppFlow {
     // Step 1 - GameSetupVC
     private func setup(gameSetupVC vc: GameSetupVC) {
         vc.viewModel = GameSetupVM(api: api)
-        vc.gameSettings = SCGameSettings()
+        vc.gameSettings = gameSettings
     }
     
     // Step 2 - GameVC
@@ -40,6 +42,7 @@ class MainAppFlow {
         navigationController.viewControllers.first?.navigationItem.backBarButtonItem = backItem
         
         let vc = createGameVC()
+        vc.viewModel = GameVM(imageStore: imageStore, gameSettings: gameSettings)
         navigationController.pushViewController(vc, animated: true)
     }
 
