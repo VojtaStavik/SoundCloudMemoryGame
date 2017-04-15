@@ -11,6 +11,14 @@ protocol API {
     func downloadImages(urls: [URL]) -> SignalProducer<ImageStore, Error>
 }
 
+extension API {
+    /// Combined producer which downloads available iamge URLs and prepare ImageStore with them
+    func fetchImageURLsAndPrepareImageStore(count: Int) -> SignalProducer<ImageStore, Error> {
+        return getImagesURLs(count: count)
+            .flatMap(.concat, transform: downloadImages)
+    }
+}
+
 /// Concrete implementation for SoundCloud API
 struct SCAPI: API {
     
@@ -29,6 +37,10 @@ struct SCAPI: API {
     
     /// Downloads images and creates a new ImageStore with them
     func downloadImages(urls: [URL]) -> SignalProducer<ImageStore, Error> {
+        
+        // No need to be super clever here, and introduce download queues etc. Let's
+        // just download everything all together in parallel.
+        
         let singleImageDownloadProducers = urls.map(downloadImage)
         let combinedProducer = SignalProducer<SignalProducer<ImageStore, Error>, Error>(singleImageDownloadProducers)
         

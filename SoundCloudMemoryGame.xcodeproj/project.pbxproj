@@ -41,6 +41,9 @@
 		D84DC0DC1EA16D51000DE3DE /* paul.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D84DC0DA1EA16D51000DE3DE /* paul.jpg */; };
 		D84DC0DD1EA16D51000DE3DE /* ringo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D84DC0DB1EA16D51000DE3DE /* ringo.jpg */; };
 		D84DC0DF1EA17D04000DE3DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0DE1EA17D04000DE3DE /* ViewController.swift */; };
+		D84DC0E31EA21F90000DE3DE /* GameSetupVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0E21EA21F90000DE3DE /* GameSetupVM.swift */; };
+		D84DC0E51EA220F8000DE3DE /* GameSetupVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0E41EA220F8000DE3DE /* GameSetupVMTests.swift */; };
+		D84DC0E71EA22AD3000DE3DE /* APIMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0E61EA22AD3000DE3DE /* APIMocks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +114,9 @@
 		D84DC0DA1EA16D51000DE3DE /* paul.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paul.jpg; sourceTree = "<group>"; };
 		D84DC0DB1EA16D51000DE3DE /* ringo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ringo.jpg; sourceTree = "<group>"; };
 		D84DC0DE1EA17D04000DE3DE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D84DC0E21EA21F90000DE3DE /* GameSetupVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSetupVM.swift; sourceTree = "<group>"; };
+		D84DC0E41EA220F8000DE3DE /* GameSetupVMTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSetupVMTests.swift; sourceTree = "<group>"; };
+		D84DC0E61EA22AD3000DE3DE /* APIMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIMocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,10 +148,10 @@
 		D8389D091EA111DE003E1D45 = {
 			isa = PBXGroup;
 			children = (
+				D84DC07A1EA11997000DE3DE /* Frameworks */,
+				D8389D131EA111DE003E1D45 /* Products */,
 				D84DC0B11EA160E3000DE3DE /* SoundCloudMemoryGame */,
 				D8389D291EA111DE003E1D45 /* SoundCloudMemoryGameTests */,
-				D8389D131EA111DE003E1D45 /* Products */,
-				D84DC07A1EA11997000DE3DE /* Frameworks */,
 				D84DC0781EA1182F000DE3DE /* cartfile */,
 			);
 			sourceTree = "<group>";
@@ -162,10 +168,10 @@
 		D8389D291EA111DE003E1D45 /* SoundCloudMemoryGameTests */ = {
 			isa = PBXGroup;
 			children = (
+				D8389D2C1EA111DE003E1D45 /* Info.plist */,
+				D84DC0AE1EA15020000DE3DE /* apiMockResponse.json */,
 				D84DC0DA1EA16D51000DE3DE /* paul.jpg */,
 				D84DC0DB1EA16D51000DE3DE /* ringo.jpg */,
-				D84DC0AE1EA15020000DE3DE /* apiMockResponse.json */,
-				D8389D2C1EA111DE003E1D45 /* Info.plist */,
 			);
 			path = SoundCloudMemoryGameTests;
 			sourceTree = "<group>";
@@ -187,13 +193,14 @@
 			isa = PBXGroup;
 			children = (
 				D84DC0CE1EA16110000DE3DE /* Errors */,
-				D84DC0CD1EA16106000DE3DE /* Networking */,
 				D84DC0CA1EA160EC000DE3DE /* Model */,
+				D84DC0CD1EA16106000DE3DE /* Networking */,
+				D84DC0E01EA21EE5000DE3DE /* Scenes */,
 				D84DC0B41EA160E3000DE3DE /* AppDelegate.swift */,
 				D84DC0B51EA160E3000DE3DE /* Assets.xcassets */,
+				D84DC0BE1EA160E3000DE3DE /* Info.plist */,
 				D84DC0B61EA160E3000DE3DE /* LaunchScreen.storyboard */,
 				D84DC0B81EA160E3000DE3DE /* Main.storyboard */,
-				D84DC0BE1EA160E3000DE3DE /* Info.plist */,
 				D84DC0DE1EA17D04000DE3DE /* ViewController.swift */,
 			);
 			path = SoundCloudMemoryGame;
@@ -204,16 +211,17 @@
 			children = (
 				D84DC0CF1EA1615C000DE3DE /* ImageStore.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D84DC0CB1EA160F9000DE3DE /* API */ = {
 			isa = PBXGroup;
 			children = (
 				D84DC0B21EA160E3000DE3DE /* API.swift */,
+				D84DC0E61EA22AD3000DE3DE /* APIMocks.swift */,
 				D84DC0B31EA160E3000DE3DE /* APITests.swift */,
 			);
-			name = API;
+			path = API;
 			sourceTree = "<group>";
 		};
 		D84DC0CC1EA160FE000DE3DE /* Gateway */ = {
@@ -223,7 +231,7 @@
 				D84DC0BC1EA160E3000DE3DE /* GatewayMocks.swift */,
 				D84DC0BD1EA160E3000DE3DE /* GatewayTests.swift */,
 			);
-			name = Gateway;
+			path = Gateway;
 			sourceTree = "<group>";
 		};
 		D84DC0CD1EA16106000DE3DE /* Networking */ = {
@@ -232,7 +240,7 @@
 				D84DC0CB1EA160F9000DE3DE /* API */,
 				D84DC0CC1EA160FE000DE3DE /* Gateway */,
 			);
-			name = Networking;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		D84DC0CE1EA16110000DE3DE /* Errors */ = {
@@ -240,7 +248,25 @@
 			children = (
 				D84DC0BA1EA160E3000DE3DE /* Errors.swift */,
 			);
-			name = Errors;
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		D84DC0E01EA21EE5000DE3DE /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0E11EA21F6E000DE3DE /* GameSetup */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D84DC0E11EA21F6E000DE3DE /* GameSetup */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0E21EA21F90000DE3DE /* GameSetupVM.swift */,
+				D84DC0E41EA220F8000DE3DE /* GameSetupVMTests.swift */,
+			);
+			name = GameSetup;
+			path = GameSetup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +388,7 @@
 				D84DC0D51EA16278000DE3DE /* Gateway.swift in Sources */,
 				D84DC0D61EA162EF000DE3DE /* AppDelegate.swift in Sources */,
 				D84DC0D01EA1615C000DE3DE /* ImageStore.swift in Sources */,
+				D84DC0E31EA21F90000DE3DE /* GameSetupVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +398,9 @@
 			files = (
 				D84DC0C81EA160E3000DE3DE /* GatewayTests.swift in Sources */,
 				D84DC0C71EA160E3000DE3DE /* GatewayMocks.swift in Sources */,
+				D84DC0E51EA220F8000DE3DE /* GameSetupVMTests.swift in Sources */,
 				D84DC0C01EA160E3000DE3DE /* APITests.swift in Sources */,
+				D84DC0E71EA22AD3000DE3DE /* APIMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +421,7 @@
 				D84DC0B71EA160E3000DE3DE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		D84DC0B81EA160E3000DE3DE /* Main.storyboard */ = {
@@ -400,6 +430,7 @@
 				D84DC0B91EA160E3000DE3DE /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
