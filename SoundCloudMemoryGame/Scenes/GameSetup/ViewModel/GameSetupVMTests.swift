@@ -36,8 +36,8 @@ class GameSetupVMTests: QuickSpec {
                         expect(vm.state.value).to(equal(GameSetupVM.State.loadingImages))
                     }
                     
-                    it("should call API's fetchImageURLsAndPrepareImageStore with count 4") {
-                        expect(api.getImagesURLsCount).toEventually(equal(4))
+                    it("should call API's fetchImageURLsAndPrepareImageStore with 2") {
+                        expect(api.getImagesURLsCount).toEventually(equal(2))
                     }
                     
                     context("and called again before the first called is finished") {

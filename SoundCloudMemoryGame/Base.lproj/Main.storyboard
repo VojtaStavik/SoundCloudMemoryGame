@@ -14,7 +14,7 @@
         <!--Memory Game-->
         <scene sceneID="R06-Oz-O39">
             <objects>
-                <viewController id="cQ3-bp-PkB" customClass="ViewController" customModule="SoundCloudMemoryGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameSetupVC" id="cQ3-bp-PkB" customClass="GameSetupVC" customModule="SoundCloudMemoryGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="egO-4R-XvP"/>
                         <viewControllerLayoutGuide type="bottom" id="P9E-TC-IIk"/>
@@ -29,34 +29,8 @@
                                     <constraint firstAttribute="width" secondItem="QRe-Xc-dEa" secondAttribute="height" multiplier="1:1" id="PQ9-Sf-zBe"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e9b-H3-oSG">
+                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e9b-H3-oSG">
                                 <rect key="frame" x="16" y="408" width="343" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aga-DU-nxj">
-                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.54366024267350632" blue="0.085229233329160548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="4">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBC-Mt-1CP">
-                                        <rect key="frame" x="119.5" y="0.0" width="104" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.54366024267350632" blue="0.085229233329160548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="8">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWo-RN-Fev">
-                                        <rect key="frame" x="239.5" y="0.0" width="103.5" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.54366024267350632" blue="0.085229233329160548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="12">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose number of cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBP-E1-E6u">
                                 <rect key="frame" x="93" y="355.5" width="189" height="20.5"/>
@@ -64,7 +38,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="x23-u3-2RU">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="x23-u3-2RU">
                                 <rect key="frame" x="177" y="470" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ta-x2-S72">
@@ -90,6 +64,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Memory Game" id="k5g-ON-uuZ"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="x23-u3-2RU" id="GFN-J8-XI3"/>
+                        <outlet property="buttonBar" destination="e9b-H3-oSG" id="Unj-BI-mZd"/>
+                        <outlet property="downloadingImagesLabel" destination="5ta-x2-S72" id="toJ-2N-G1p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OeT-px-iI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

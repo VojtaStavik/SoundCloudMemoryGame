@@ -14,16 +14,20 @@ class GameSetupVM {
     }
     
     /// Indicates the state of the VM
-    public lazy var state: Property<State> = Property(capturing: self._state)
+    private(set) lazy var state: Property<State> = Property(capturing: self._state)
 
     func prepareGame(with numberOfCards: Int) {
+        if numberOfCards % 2 != 0 {
+            fatalError("Number of cards has to be an even number. Got \(numberOfCards).")
+        }
+        
         guard state.value != .loadingImages else {
             return
         }
         
         _state.value = .loadingImages
         
-        api.fetchImageURLsAndPrepareImageStore(count: numberOfCards)
+        api.fetchImageURLsAndPrepareImageStore(count: numberOfCards / 2)
             .startWithResult { [weak self] (result) in
                 switch result {
                 case let .success(imageStore):
@@ -45,10 +49,8 @@ class GameSetupVM {
 
     /// Private mutable version of the state property
     fileprivate let _state = MutableProperty(State.default)
-    
-
-    
 }
+
 
 // Enums with associated values are not yet equatable by default.
 // see https://github.com/apple/swift-evolution/blob/master/proposals/0143-conditional-conformances.md

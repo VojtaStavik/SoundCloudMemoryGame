@@ -40,10 +40,18 @@
 		D84DC0D91EA1631B000DE3DE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D84DC0BE1EA160E3000DE3DE /* Info.plist */; };
 		D84DC0DC1EA16D51000DE3DE /* paul.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D84DC0DA1EA16D51000DE3DE /* paul.jpg */; };
 		D84DC0DD1EA16D51000DE3DE /* ringo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D84DC0DB1EA16D51000DE3DE /* ringo.jpg */; };
-		D84DC0DF1EA17D04000DE3DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0DE1EA17D04000DE3DE /* ViewController.swift */; };
+		D84DC0DF1EA17D04000DE3DE /* GameSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0DE1EA17D04000DE3DE /* GameSetupVC.swift */; };
 		D84DC0E31EA21F90000DE3DE /* GameSetupVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0E21EA21F90000DE3DE /* GameSetupVM.swift */; };
 		D84DC0E51EA220F8000DE3DE /* GameSetupVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0E41EA220F8000DE3DE /* GameSetupVMTests.swift */; };
 		D84DC0E71EA22AD3000DE3DE /* APIMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0E61EA22AD3000DE3DE /* APIMocks.swift */; };
+		D84DC0EB1EA23D96000DE3DE /* GameSetupVMMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0EA1EA23D96000DE3DE /* GameSetupVMMock.swift */; };
+		D84DC0ED1EA23E51000DE3DE /* GameSetupVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0EC1EA23E51000DE3DE /* GameSetupVCTests.swift */; };
+		D84DC0EF1EA245E0000DE3DE /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0EE1EA245E0000DE3DE /* GameSettings.swift */; };
+		D84DC0F21EA24968000DE3DE /* GameSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0F11EA24968000DE3DE /* GameSettingsTests.swift */; };
+		D84DC0F41EA253D7000DE3DE /* ChooseCountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0F31EA253D7000DE3DE /* ChooseCountButton.swift */; };
+		D84DC0F71EA25441000DE3DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0F61EA25441000DE3DE /* Colors.swift */; };
+		D84DC0FB1EA258C4000DE3DE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0FA1EA258C4000DE3DE /* main.swift */; };
+		D84DC0FD1EA25D2D000DE3DE /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0FC1EA25D2D000DE3DE /* Alerts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,10 +121,18 @@
 		D84DC0CF1EA1615C000DE3DE /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		D84DC0DA1EA16D51000DE3DE /* paul.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paul.jpg; sourceTree = "<group>"; };
 		D84DC0DB1EA16D51000DE3DE /* ringo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ringo.jpg; sourceTree = "<group>"; };
-		D84DC0DE1EA17D04000DE3DE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D84DC0DE1EA17D04000DE3DE /* GameSetupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSetupVC.swift; sourceTree = "<group>"; };
 		D84DC0E21EA21F90000DE3DE /* GameSetupVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSetupVM.swift; sourceTree = "<group>"; };
 		D84DC0E41EA220F8000DE3DE /* GameSetupVMTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSetupVMTests.swift; sourceTree = "<group>"; };
 		D84DC0E61EA22AD3000DE3DE /* APIMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIMocks.swift; sourceTree = "<group>"; };
+		D84DC0EA1EA23D96000DE3DE /* GameSetupVMMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSetupVMMock.swift; sourceTree = "<group>"; };
+		D84DC0EC1EA23E51000DE3DE /* GameSetupVCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSetupVCTests.swift; sourceTree = "<group>"; };
+		D84DC0EE1EA245E0000DE3DE /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		D84DC0F11EA24968000DE3DE /* GameSettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettingsTests.swift; sourceTree = "<group>"; };
+		D84DC0F31EA253D7000DE3DE /* ChooseCountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCountButton.swift; sourceTree = "<group>"; };
+		D84DC0F61EA25441000DE3DE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		D84DC0FA1EA258C4000DE3DE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D84DC0FC1EA25D2D000DE3DE /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,15 +209,17 @@
 			isa = PBXGroup;
 			children = (
 				D84DC0CE1EA16110000DE3DE /* Errors */,
+				D84DC0F01EA24959000DE3DE /* GameSettings */,
 				D84DC0CA1EA160EC000DE3DE /* Model */,
 				D84DC0CD1EA16106000DE3DE /* Networking */,
 				D84DC0E01EA21EE5000DE3DE /* Scenes */,
+				D84DC0F51EA25437000DE3DE /* Appearance */,
 				D84DC0B41EA160E3000DE3DE /* AppDelegate.swift */,
 				D84DC0B51EA160E3000DE3DE /* Assets.xcassets */,
 				D84DC0BE1EA160E3000DE3DE /* Info.plist */,
 				D84DC0B61EA160E3000DE3DE /* LaunchScreen.storyboard */,
 				D84DC0B81EA160E3000DE3DE /* Main.storyboard */,
-				D84DC0DE1EA17D04000DE3DE /* ViewController.swift */,
+				D84DC0FA1EA258C4000DE3DE /* main.swift */,
 			);
 			path = SoundCloudMemoryGame;
 			sourceTree = "<group>";
@@ -247,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				D84DC0BA1EA160E3000DE3DE /* Errors.swift */,
+				D84DC0FC1EA25D2D000DE3DE /* Alerts.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -262,11 +281,56 @@
 		D84DC0E11EA21F6E000DE3DE /* GameSetup */ = {
 			isa = PBXGroup;
 			children = (
+				D84DC0E91EA23D82000DE3DE /* ViewController */,
+				D84DC0E81EA237BF000DE3DE /* ViewModel */,
+				D84DC0F81EA2552C000DE3DE /* Views */,
+			);
+			path = GameSetup;
+			sourceTree = "<group>";
+		};
+		D84DC0E81EA237BF000DE3DE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 				D84DC0E21EA21F90000DE3DE /* GameSetupVM.swift */,
+				D84DC0EA1EA23D96000DE3DE /* GameSetupVMMock.swift */,
 				D84DC0E41EA220F8000DE3DE /* GameSetupVMTests.swift */,
 			);
-			name = GameSetup;
-			path = GameSetup;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D84DC0E91EA23D82000DE3DE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0DE1EA17D04000DE3DE /* GameSetupVC.swift */,
+				D84DC0EC1EA23E51000DE3DE /* GameSetupVCTests.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D84DC0F01EA24959000DE3DE /* GameSettings */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0EE1EA245E0000DE3DE /* GameSettings.swift */,
+				D84DC0F11EA24968000DE3DE /* GameSettingsTests.swift */,
+			);
+			path = GameSettings;
+			sourceTree = "<group>";
+		};
+		D84DC0F51EA25437000DE3DE /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0F61EA25441000DE3DE /* Colors.swift */,
+			);
+			name = Appearance;
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D84DC0F81EA2552C000DE3DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0F31EA253D7000DE3DE /* ChooseCountButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,13 +446,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D84DC0DF1EA17D04000DE3DE /* ViewController.swift in Sources */,
+				D84DC0EF1EA245E0000DE3DE /* GameSettings.swift in Sources */,
+				D84DC0F71EA25441000DE3DE /* Colors.swift in Sources */,
+				D84DC0DF1EA17D04000DE3DE /* GameSetupVC.swift in Sources */,
 				D84DC0D11EA1624E000DE3DE /* API.swift in Sources */,
 				D84DC0D41EA16278000DE3DE /* Errors.swift in Sources */,
 				D84DC0D51EA16278000DE3DE /* Gateway.swift in Sources */,
 				D84DC0D61EA162EF000DE3DE /* AppDelegate.swift in Sources */,
+				D84DC0FB1EA258C4000DE3DE /* main.swift in Sources */,
 				D84DC0D01EA1615C000DE3DE /* ImageStore.swift in Sources */,
 				D84DC0E31EA21F90000DE3DE /* GameSetupVM.swift in Sources */,
+				D84DC0FD1EA25D2D000DE3DE /* Alerts.swift in Sources */,
+				D84DC0F41EA253D7000DE3DE /* ChooseCountButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,10 +465,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84DC0F21EA24968000DE3DE /* GameSettingsTests.swift in Sources */,
 				D84DC0C81EA160E3000DE3DE /* GatewayTests.swift in Sources */,
 				D84DC0C71EA160E3000DE3DE /* GatewayMocks.swift in Sources */,
+				D84DC0EB1EA23D96000DE3DE /* GameSetupVMMock.swift in Sources */,
 				D84DC0E51EA220F8000DE3DE /* GameSetupVMTests.swift in Sources */,
 				D84DC0C01EA160E3000DE3DE /* APITests.swift in Sources */,
+				D84DC0ED1EA23E51000DE3DE /* GameSetupVCTests.swift in Sources */,
 				D84DC0E71EA22AD3000DE3DE /* APIMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +608,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = X53G3KMVA6;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -547,6 +620,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VojtaStavik.SoundCloudMemoryGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -557,6 +631,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = X53G3KMVA6;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -568,6 +643,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VojtaStavik.SoundCloudMemoryGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
