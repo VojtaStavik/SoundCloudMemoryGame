@@ -11,7 +11,7 @@ class GameSettingsTests: QuickSpec {
         describe("GameSettings") {
 
             struct TestSettings: GameSettings {
-                static let supportedGrids: [Grid] = [
+                let supportedGrids: [Grid] = [
                     (collums: 2, rows: 2),
                     (collums: 2, rows: 3)
                 ]
@@ -23,7 +23,7 @@ class GameSettingsTests: QuickSpec {
                     6: (collums: 2, rows: 3)
                 ]
                 
-                expect(TestSettings.availableGames == correctGames).to(beTrue())
+                expect(TestSettings().availableGames == correctGames).to(beTrue())
             }
         }
     }

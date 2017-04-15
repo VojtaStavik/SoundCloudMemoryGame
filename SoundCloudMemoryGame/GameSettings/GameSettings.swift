@@ -6,11 +6,11 @@ typealias Grid = (collums: Int, rows: Int)
 typealias CardCount = Int
 
 protocol GameSettings {
-    static var supportedGrids: [Grid] { get }
+    var supportedGrids: [Grid] { get }
 }
 
 extension GameSettings {
-    static var availableGames: Games {
+    var availableGames: Games {
         return supportedGrids
             .reduce(Games()) { (result, grid) -> Games in
                 var mutableResult = result
@@ -22,7 +22,7 @@ extension GameSettings {
 
 /// Concrete implementation of GameSettings
 struct SCGameSettings: GameSettings {
-    static let supportedGrids: [Grid] = [
+    let supportedGrids: [Grid] = [
         (collums: 2, rows: 2),
         (collums: 2, rows: 3),
         (collums: 4, rows: 3),

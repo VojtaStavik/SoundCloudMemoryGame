@@ -5,22 +5,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    lazy var api = SCAPI(gateway: SCGateway(session: URLSession(configuration: .default)))
+    var mainAppFlow: MainAppFlow!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        window = UIWindow(frame: UIScreen.main.bounds)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.makeKeyAndVisible()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        mainAppFlow = MainAppFlow(window: window)
         
-        let navVC: UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
-        
-        let vc: GameSetupVC = navVC.viewControllers.first as! GameSetupVC
-        vc.gameSettings = SCGameSettings.self
-        vc.viewModel = GameSetupVM(api: api)
-        
-        self.window?.rootViewController = navVC
-        self.window?.makeKeyAndVisible()
+        self.window = window
         
         return true
     }

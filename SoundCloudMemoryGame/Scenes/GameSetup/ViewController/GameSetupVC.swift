@@ -7,7 +7,7 @@ class GameSetupVC: UIViewController {
     
     // MARK: --=== Dependencies ==---
     
-    var gameSettings: GameSettings.Type!
+    var gameSettings: GameSettings!
     
     var viewModel: GameSetupVM! {
         didSet {
@@ -29,6 +29,8 @@ class GameSetupVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = NSLocalizedString("Memory Game", comment: "Game setup controller title")
         
         prepareButtons(values: gameSettings.availableGames.keys.sorted())
     }

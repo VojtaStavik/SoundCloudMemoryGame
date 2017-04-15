@@ -12,7 +12,7 @@ class GameSetupVCTests: QuickSpec {
         describe("GameSetupVC") {
             
             struct GameSettingsMock: GameSettings {
-                static let supportedGrids: [Grid] = [
+                let supportedGrids: [Grid] = [
                     (collums: 2, rows: 4),
                     (collums: 2, rows: 2),
                 ]
@@ -26,7 +26,7 @@ class GameSetupVCTests: QuickSpec {
                 vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameSetupVC") as! GameSetupVC
                 
                 vc.viewModel = vm
-                vc.gameSettings = GameSettingsMock.self
+                vc.gameSettings = GameSettingsMock()
                 
                 // load view
                 _ = vc.view
