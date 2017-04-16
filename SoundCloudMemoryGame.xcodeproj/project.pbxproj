@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D80AAA1B1EA3EE090071605D /* ReferenceImagesDiffs in Resources */ = {isa = PBXBuildFile; fileRef = D80AAA1A1EA3EE080071605D /* ReferenceImagesDiffs */; };
 		D84DC0871EA119E7000DE3DE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07B1EA11997000DE3DE /* Result.framework */; };
 		D84DC0881EA119E7000DE3DE /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07B1EA11997000DE3DE /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D84DC08D1EA119E7000DE3DE /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC07E1EA11997000DE3DE /* ReactiveCocoa.framework */; };
@@ -113,6 +114,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D80AAA1A1EA3EE080071605D /* ReferenceImagesDiffs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ReferenceImagesDiffs; sourceTree = "<group>"; };
 		D8389D121EA111DE003E1D45 /* SoundCloudMemoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundCloudMemoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8389D261EA111DE003E1D45 /* SoundCloudMemoryGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundCloudMemoryGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8389D2C1EA111DE003E1D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				D8ECA5251EA3AA6500F6067B /* ReferenceImages */,
+				D80AAA1A1EA3EE080071605D /* ReferenceImagesDiffs */,
 				D8389D2C1EA111DE003E1D45 /* Info.plist */,
 				D84DC0AE1EA15020000DE3DE /* apiMockResponse.json */,
 				D84DC0DA1EA16D51000DE3DE /* paul.jpg */,
@@ -567,6 +570,7 @@
 				D84DC0AF1EA15020000DE3DE /* apiMockResponse.json in Resources */,
 				D84DC0DD1EA16D51000DE3DE /* ringo.jpg in Resources */,
 				D8ECA5261EA3AA6500F6067B /* ReferenceImages in Resources */,
+				D80AAA1B1EA3EE090071605D /* ReferenceImagesDiffs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,7 +699,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -740,7 +744,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -762,7 +766,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = SoundCloudMemoryGame/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VojtaStavik.SoundCloudMemoryGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -785,7 +789,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = SoundCloudMemoryGame/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VojtaStavik.SoundCloudMemoryGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";

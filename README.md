@@ -2,7 +2,7 @@
 
 ### Requirements
 
-- iOS 10.0+
+- iOS 9.3+
 - Xcode 8.3+
 - Swift 3.1+
 
@@ -45,3 +45,9 @@ The project uses [Quick](https://github.com/Quick/Quick) for behavior-driven tes
 
 #### Snapshot tests
 Snapshot tests are meant to be used for testing views. The project uses [FBSnapshotTestCase](https://github.com/facebook/ios-snapshot-test-case) for generating and comparing snapshots. For seamless integration with Quick, there's [Nimble-Snapshots](https://github.com/ashfurrow/Nimble-Snapshots),  a Nimble matcher wrapping FBSnapshotTestCase.
+
+If you want to test the project for various system versions and devices, you can use [Fastlane](https://github.com/fastlane/fastlane) and simply run: 
+```bash
+fastlane scan
+```
+Please note, that you have to have the following simulators installed in the system: ["iPhone 6 (9.3)", "iPhone 6 Plus (9.3)", "iPhone 6 (10.3)", "iPhone 6 Plus (10.3)"].

@@ -2,6 +2,8 @@
 build/
 DerivedData/
 
+TestResources/ReferenceImagesDiffs/*
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
@@ -25,3 +27,6 @@ xcuserdata/
 
 Carthage/Checkouts
 Carthage/Build
+
+# Fastlane
+test_output

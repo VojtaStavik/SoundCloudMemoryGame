@@ -153,7 +153,7 @@ func _performSnapshotTest(_ name: String?, isDeviceAgnostic: Bool = false, usesD
     let instance = try! actualExpression.evaluate()!
     let testFileLocation = actualExpression.location.file
     let referenceImageDirectory = _getDefaultReferenceDirectory(testFileLocation)
-    let snapshotName = _sanitizedTestName(name)
+    let snapshotName = _sanitizedTestName(name) + "_iOS\(osMajorVersion)"
     let tolerance = tolerance ?? _getTolerance()
 
     let result = FBSnapshotTest.compareSnapshot(instance, isDeviceAgnostic: isDeviceAgnostic,
@@ -169,13 +169,16 @@ func _performSnapshotTest(_ name: String?, isDeviceAgnostic: Bool = false, usesD
     return result
 }
 
+let osMajorVersion = String(ProcessInfo.processInfo.operatingSystemVersion.majorVersion)
+
 func _recordSnapshot(_ name: String?, isDeviceAgnostic: Bool = false, usesDrawRect: Bool = false,
                      actualExpression: Expression<Snapshotable>, failureMessage: FailureMessage) -> Bool {
     // swiftlint:disable:next force_try force_unwrapping
     let instance = try! actualExpression.evaluate()!
     let testFileLocation = actualExpression.location.file
     let referenceImageDirectory = _getDefaultReferenceDirectory(testFileLocation)
-    let snapshotName = _sanitizedTestName(name)
+    
+    let snapshotName = _sanitizedTestName(name) + "_iOS\(osMajorVersion)"
     let tolerance = _getTolerance()
 
     _clearFailureMessage(failureMessage)

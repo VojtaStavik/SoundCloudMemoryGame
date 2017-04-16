@@ -1,0 +1,3 @@
+scheme "SoundCloudMemoryGame"
+devices ["iPhone 6 (9.3)", "iPhone 6 Plus (9.3)", "iPhone 6 (10.3)", "iPhone 6 Plus (10.3)"]
+clean true
