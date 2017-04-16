@@ -21,8 +21,8 @@ class GameVMMock: GameVM {
     
     var mockGamePlan: [[Card]] = []
     
-    var flippedCardCalledWithIndex: (row: Int, collum: Int)?
-    override func flipCard(row: Int, collum: Int) {
-        flippedCardCalledWithIndex = (row, collum)
+    var flippedCardCalledWithIndex: (row: Int, collumn: Int)?
+    override func flipCard(row: Int, collumn: Int) {
+        flippedCardCalledWithIndex = (row, collumn)
     }
 }

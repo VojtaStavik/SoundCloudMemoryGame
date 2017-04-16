@@ -34,7 +34,7 @@ class CardView: UIView {
         
         UIView.transition(from: faceImageView,
                           to: backImageView,
-                          duration: 0.5,
+                          duration: AnimationTime.unflip,
                           options: [.transitionFlipFromLeft, .showHideTransitionViews],
                           completion: nil)
     }
@@ -46,7 +46,7 @@ class CardView: UIView {
 
         UIView.transition(from: backImageView,
                           to: faceImageView,
-                          duration: 0.5,
+                          duration: AnimationTime.flip,
                           options: [.transitionFlipFromRight, .showHideTransitionViews],
                           completion: nil)
     }

@@ -67,6 +67,7 @@
 		D84DC1261EA3774D000DE3DE /* Snaphots.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1231EA37722000DE3DE /* Snaphots.swift */; };
 		D8ECA5261EA3AA6500F6067B /* ReferenceImages in Resources */ = {isa = PBXBuildFile; fileRef = D8ECA5251EA3AA6500F6067B /* ReferenceImages */; };
 		D8ECA5281EA3AC6E00F6067B /* GameVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8ECA5271EA3AC6E00F6067B /* GameVCTests.swift */; };
+		D8F93FE31EA3B94A0013437F /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F93FE21EA3B94A0013437F /* Animations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,7 @@
 		D84DC1231EA37722000DE3DE /* Snaphots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Snaphots.swift; path = SoundCloudMemoryGame/Snaphots.swift; sourceTree = SOURCE_ROOT; };
 		D8ECA5251EA3AA6500F6067B /* ReferenceImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ReferenceImages; sourceTree = "<group>"; };
 		D8ECA5271EA3AC6E00F6067B /* GameVCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVCTests.swift; sourceTree = "<group>"; };
+		D8F93FE21EA3B94A0013437F /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				D84DC0F61EA25441000DE3DE /* Colors.swift */,
+				D8F93FE21EA3B94A0013437F /* Animations.swift */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -382,9 +385,9 @@
 		D84DC1011EA26BD2000DE3DE /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				D84DC1121EA29793000DE3DE /* Views */,
 				D84DC1041EA26C90000DE3DE /* ViewController */,
 				D84DC1071EA26F9A000DE3DE /* ViewModel */,
+				D84DC1121EA29793000DE3DE /* Views */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				D84DC0D11EA1624E000DE3DE /* API.swift in Sources */,
 				D84DC1161EA2A0B0000DE3DE /* PinToSuperview.swift in Sources */,
 				D84DC1031EA26C8C000DE3DE /* GameVC.swift in Sources */,
+				D8F93FE31EA3B94A0013437F /* Animations.swift in Sources */,
 				D84DC1001EA25F85000DE3DE /* MainAppFlow.swift in Sources */,
 				D84DC0D41EA16278000DE3DE /* Errors.swift in Sources */,
 				D84DC0D51EA16278000DE3DE /* Gateway.swift in Sources */,

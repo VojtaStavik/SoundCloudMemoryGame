@@ -2,7 +2,7 @@
 import Foundation
 
 typealias Games = [CardCount: Grid]
-typealias Grid = (collums: Int, rows: Int)
+typealias Grid = (collumns: Int, rows: Int)
 typealias CardCount = Int
 
 protocol GameSettings {
@@ -14,7 +14,7 @@ extension GameSettings {
         return supportedGrids
             .reduce(Games()) { (result, grid) -> Games in
                 var mutableResult = result
-                mutableResult[grid.collums * grid.rows] = grid
+                mutableResult[grid.collumns * grid.rows] = grid
                 return mutableResult
             }
     }
@@ -23,10 +23,10 @@ extension GameSettings {
 /// Concrete implementation of GameSettings
 struct SCGameSettings: GameSettings {
     let supportedGrids: [Grid] = [
-        (collums: 2, rows: 2),
-        (collums: 2, rows: 3),
-        (collums: 4, rows: 3),
-        (collums: 4, rows: 4)
+        (collumns: 2, rows: 2),
+        (collumns: 2, rows: 3),
+        (collumns: 4, rows: 3),
+        (collumns: 4, rows: 4)
     ]
 }
 

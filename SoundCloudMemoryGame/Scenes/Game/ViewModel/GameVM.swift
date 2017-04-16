@@ -4,13 +4,6 @@ import ReactiveSwift
 
 class GameVM {
     
-    // The delay before resetting the cards after wrong move
-    let wrongMoveResetDelay: TimeInterval = 0.5
-    
-    // The delay after match
-    let matchDelay: TimeInterval = 0.5
-    
-    
     // MARK: --=== Public ==---
 
     init(imageStore: ImageStore, gameSettings: GameSettings) {
@@ -18,6 +11,7 @@ class GameVM {
         self.gameSettings = gameSettings
     }
 
+    /// GamePlan of the current game.
     lazy var gamePlan: [[Card]] = {
         
         var allImages: [(ImageID, UIImage)] = []
@@ -40,15 +34,15 @@ class GameVM {
             fatalError("Number of cards \(cards.count) is not a supported game configuration.")
         }
         
-        return stride(from: 0, to: cards.count, by: grid.collums)
+        return stride(from: 0, to: cards.count, by: grid.collumns)
             .map {
-                Array(cards[$0..<($0 + grid.collums)])
+                Array(cards[$0..<($0 + grid.collumns)])
             }
     }()
     
-    
-    func flipCard(row: Int, collum: Int) {
-        let card = gamePlan[row][collum]
+    /// Flips card on the given row and collumn
+    func flipCard(row: Int, collumn: Int) {
+        let card = gamePlan[row][collumn]
         guard card.isFlipped == false else {
             // Ignore flips on already flipped cards
             return
@@ -57,26 +51,30 @@ class GameVM {
         updateGameState(with: card)
     }
     
-    // MARK: --=== Private ==---
-    
+    /// Curent state of the game
+    lazy var state: Property<GameState> = Property(self._state)
+
     enum GameState {
         case regular
         case moveInProgress(previous: Card)
         case resolving
         case finished
     }
-   
-    private(set) var state: GameState = .regular
+    
+    
+    // MARK: --=== Private ==---
+    
+    private let _state: MutableProperty<GameState> = MutableProperty(.regular)
     
     private func updateGameState(with card: Card) {
-        switch state {
+        switch _state.value {
         case .regular:
             card.flip()
-            state = .moveInProgress(previous: card)
+            _state.value = .moveInProgress(previous: card)
             
         case .moveInProgress(previous: let previousCard):
             card.flip()
-            state = .resolving
+            _state.value  = .resolving
             resolveMatch(card1: previousCard, card2: card)
             
         default:
@@ -88,15 +86,15 @@ class GameVM {
     private func resolveMatch(card1: Card, card2: Card) {
         
         if card1.matches(card2) {
-            card1.animateMatch?(matchDelay)
-            card2.animateMatch?(matchDelay)
-            DispatchQueue.main.asyncAfter(deadline: .now() + matchDelay) {
+            card1.match()
+            card2.match()
+            DispatchQueue.main.asyncAfter(deadline: .now() + AnimationTime.match) {
                 self.checkIfFinished()
             }
         
         } else {
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + wrongMoveResetDelay) {
+            let duration: TimeInterval = AnimationTime.flip + AnimationTime.notMatch
+            DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
                 self.resetCards(card1: card1, card2: card2)
             }
         }
@@ -105,16 +103,16 @@ class GameVM {
     private func resetCards(card1: Card, card2: Card) {
         card1.reset()
         card2.reset()
-        state = .regular
+        _state.value  = .regular
     }
     
     private func checkIfFinished() {
         let unflippedCards = gamePlan.flatMap{ $0 }.filter{ $0.isFlipped == false }
         
         if unflippedCards.isEmpty {
-            state = .finished
+            _state.value  = .finished
         } else {
-            state = .regular
+            _state.value  = .regular
         }
     }
     

@@ -22,7 +22,7 @@ class GameVMTests: QuickSpec {
             ]
             
             struct TestGameSettings: GameSettings {
-                let supportedGrids: [Grid] = [(collums: 2, rows: 3)]
+                let supportedGrids: [Grid] = [(collumns: 2, rows: 3)]
             }
             
             beforeEach {
@@ -46,7 +46,7 @@ class GameVMTests: QuickSpec {
             
             describe("flipCard") {
                 beforeEach {
-                    vm.flipCard(row: 2, collum: 1)
+                    vm.flipCard(row: 2, collumn: 1)
                 }
                 
                 it("should flip the proper card") {
@@ -65,7 +65,7 @@ class GameVMTests: QuickSpec {
             let imageStore: ImageStore = [:]
             
             struct TestGameSettings: GameSettings {
-                let supportedGrids: [Grid] = [(collums: 0, rows: 0)]
+                let supportedGrids: [Grid] = [(collumns: 0, rows: 0)]
             }
             
             beforeEach {
@@ -88,7 +88,7 @@ class GameVMTests: QuickSpec {
             
             context("when first card is selected") {
                 beforeEach {
-                    vm.flipCard(row: 0, collum: 0)
+                    vm.flipCard(row: 0, collumn: 0)
                 }
                 
                 it("should update game state to moveInProgress") {
@@ -97,7 +97,7 @@ class GameVMTests: QuickSpec {
                 
                 context("and not matching card is selected") {
                     beforeEach {
-                        vm.flipCard(row: 1, collum: 0)
+                        vm.flipCard(row: 1, collumn: 0)
                     }
                     
                     it("should update game state to resolving") {
@@ -125,30 +125,18 @@ class GameVMTests: QuickSpec {
                 //  Y   Y
                 
                 beforeEach {
-                    vm.flipCard(row: 0, collum: 0)
+                    vm.flipCard(row: 0, collumn: 0)
                 }
                 
                 context("and matching card is selected") {
                     
-                    var card1AnimationDuration: TimeInterval?
-                    var card2AnimationDuration: TimeInterval?
-                    
                     beforeEach {
-                        // Setup animation closures
-                        vm.gamePlan[0][0].animateMatch = { card1AnimationDuration = $0 }
-                        vm.gamePlan[0][1].animateMatch = { card2AnimationDuration = $0 }
-                        
                         // Flip the card
-                        vm.flipCard(row: 0, collum: 1)
+                        vm.flipCard(row: 0, collumn: 1)
                     }
                     
                     it("should update game state to resolving") {
                         expect(vm.state).toEventually(equal(GameVM.GameState.resolving))
-                    }
-                    
-                    it("shoud call matchAnimation closure on both cards with correct duration") {
-                        expect(card1AnimationDuration).toEventually(equal(vm.matchDelay))
-                        expect(card2AnimationDuration).toEventually(equal(vm.matchDelay))
                     }
                     
                     it("should eventually update game state to regular") {
@@ -177,12 +165,12 @@ class GameVMTests: QuickSpec {
                     vm.gamePlan[0][1].flip()
                     
                     // Flip first card
-                    vm.flipCard(row: 1, collum: 0)
+                    vm.flipCard(row: 1, collumn: 0)
                 }
                 
                 context("and matching card is selected") {
                     beforeEach {
-                        vm.flipCard(row: 1, collum: 1)
+                        vm.flipCard(row: 1, collumn: 1)
                     }
                     
                     it("should update game state to resolving") {

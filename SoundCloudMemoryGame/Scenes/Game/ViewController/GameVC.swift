@@ -14,6 +14,15 @@ class GameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareCardViews(gamePlan: viewModel.gamePlan)
+        
+        // Observe game state
+        viewModel.state.producer
+            .observe(on: UIScheduler())
+            .startWithValues { [unowned self] (state) in
+                if case .finished = state {
+                    self.finishGame()
+                }
+            }
     }
     
     func pressCard(sender: UITapGestureRecognizer) {
@@ -25,7 +34,7 @@ class GameVC: UIViewController {
             fatalError("Received a tap from a card not in indicies")
         }
         
-        viewModel.flipCard(row: index.row, collum: index.collum)
+        viewModel.flipCard(row: index.row, collumn: index.collumn)
     }
     
     
@@ -33,7 +42,7 @@ class GameVC: UIViewController {
 
     @IBOutlet fileprivate weak var mainStackView: UIStackView!
     
-    private var indicies: [CardView: (row: Int, collum: Int)] = [:]
+    private var indicies: [CardView: (row: Int, collumn: Int)] = [:]
     
     private func prepareCardViews(gamePlan: [[Card]]) {
 
@@ -41,9 +50,9 @@ class GameVC: UIViewController {
             let row = createRowStackView()
             mainStackView.addArrangedSubview(row)
             
-            for (collumIndex, card) in cardsInRow.enumerated() {
+            for (collumnIndex, card) in cardsInRow.enumerated() {
                 let cardView = createCardView(with: card)
-                indicies[cardView] = (rowIndex, collumIndex)
+                indicies[cardView] = (rowIndex, collumnIndex)
                 row.addArrangedSubview(cardView)
             }
         }
@@ -79,14 +88,37 @@ extension GameVC {
         }
         
         // Setup Match animation callback
-        card.animateMatch = { [weak cardView] _ in
-            UIView.animate(withDuration: 0.33, delay: 0, options: [.autoreverse], animations: {
-                cardView?.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        card.matchAnimationClosure = animateMatch(with: cardView)
+        return cardView
+    }
+    
+    fileprivate func animateMatch(with cardView: CardView) -> () -> Void {
+        return {
+            UIView.animate(withDuration: AnimationTime.match/2.0,
+                           delay: 0,
+                           options: [.beginFromCurrentState],
+                           animations:
+                {
+                    cardView.transform = CGAffineTransform(scaleX: Animation.matchAnimationScale,
+                                                           y: Animation.matchAnimationScale)
             }) { _ in
-                cardView?.transform = CGAffineTransform.identity
+                
+                UIView.animate(withDuration: AnimationTime.match/2.0,
+                               delay: 0,
+                               options: [.beginFromCurrentState],
+                               animations:
+                    {
+                        cardView.transform = CGAffineTransform.identity
+                })
             }
         }
-        
-        return cardView
+    }
+}
+
+extension GameVC {
+    fileprivate func finishGame() {
+        UIAlertController.showAlert(with: "🎉🎉🎉", message: "Great job!", from: self) { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
 }

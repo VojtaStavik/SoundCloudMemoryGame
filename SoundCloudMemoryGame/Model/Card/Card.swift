@@ -2,6 +2,8 @@
 import UIKit
 import ReactiveSwift
 
+// Card is in fact more a view model for CardView then a model itself.
+
 class Card {
     
     lazy var state: Property<State> = Property(self._state)
@@ -16,6 +18,9 @@ class Card {
         self.id = id
     }
     
+    let image: UIImage
+    let id: ImageID
+    
     func flip() {
         if case .regular = state.value {
             _state.value = .flipped
@@ -28,14 +33,15 @@ class Card {
         }
     }
     
-    var animateMatch: ((_ maxDuration: TimeInterval) -> Void)? = nil
+    func match() {
+        matchAnimationClosure?()
+    }
+    
+    var matchAnimationClosure: (() -> Void)? = nil
     
     // MARK: --=== Private ==---
     
     fileprivate let _state: MutableProperty<State> = MutableProperty(.regular)
-    
-    let image: UIImage
-    let id: ImageID
 }
 
 extension Card {
