@@ -1,11 +1,14 @@
+
 import UIKit
 import Quick
 import Nimble
 
-/// Master switch for snapshot tests. If 'true', all snapshots are re-recorded. Use with caution.
-let shouldRecordAllSnapshots = false
+// Helper functions for snapshot tests
 
-let defaultSnapshotFrame = CGRect(x: 0, y: 0, width: 400, height: 600)
+/// Master switch for snapshot tests. If 'true', all snapshots are re-recorded. Use with caution.
+private let shouldRecordAllSnapshots = false
+
+private let defaultSnapshotFrame = CGRect(x: 0, y: 0, width: 400, height: 600)
 
 extension UIViewController {
     func prepareForSnapshot() {

@@ -13,16 +13,9 @@ class GameVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepareCardViews(gamePlan: viewModel.gamePlan)
         
-        // Observe game state
-        viewModel.state.producer
-            .observe(on: UIScheduler())
-            .startWithValues { [unowned self] (state) in
-                if case .finished = state {
-                    self.finishGame()
-                }
-            }
+        prepareCardViews(gamePlan: viewModel.gamePlan)
+        setupVMBindings()
     }
     
     func pressCard(sender: UITapGestureRecognizer) {
@@ -56,6 +49,17 @@ class GameVC: UIViewController {
                 row.addArrangedSubview(cardView)
             }
         }
+    }
+    
+    private func setupVMBindings() {
+        // Observe game state
+        viewModel.state.producer
+            .observe(on: UIScheduler())
+            .startWithValues { [unowned self] (state) in
+                if case .finished = state {
+                    self.finishGame()
+                }
+            }
     }
 }
 
@@ -101,7 +105,7 @@ extension GameVC {
                 {
                     cardView.transform = CGAffineTransform(scaleX: Animation.matchAnimationScale,
                                                            y: Animation.matchAnimationScale)
-            }) { _ in
+                }) { _ in
                 
                 UIView.animate(withDuration: AnimationTime.match/2.0,
                                delay: 0,
@@ -109,15 +113,17 @@ extension GameVC {
                                animations:
                     {
                         cardView.transform = CGAffineTransform.identity
-                })
+                    })
+                }
             }
-        }
     }
 }
 
+
 extension GameVC {
+    
     fileprivate func finishGame() {
-        UIAlertController.showAlert(with: "🎉🎉🎉", message: "Great job!", from: self) { [weak self] in
+        UIAlertController.showAlert(with: "🎉 Completed! 🎉", message: "Great job ;-)", from: self) { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
     }

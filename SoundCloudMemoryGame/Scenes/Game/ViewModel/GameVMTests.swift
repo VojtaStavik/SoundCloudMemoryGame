@@ -45,6 +45,7 @@ class GameVMTests: QuickSpec {
             }
             
             describe("flipCard") {
+                
                 beforeEach {
                     vm.flipCard(row: 2, collumn: 1)
                 }
@@ -79,7 +80,7 @@ class GameVMTests: QuickSpec {
             }
             
             it("should have gameState regular") {
-                expect(vm.state) == GameVM.GameState.regular
+                expect(vm.state.value) == GameVM.GameState.regular
             }
 
             
@@ -87,25 +88,27 @@ class GameVMTests: QuickSpec {
             // Not match
             
             context("when first card is selected") {
+                
                 beforeEach {
                     vm.flipCard(row: 0, collumn: 0)
                 }
                 
                 it("should update game state to moveInProgress") {
-                    expect(vm.state) == GameVM.GameState.moveInProgress(previous: vm.gamePlan[0][0])
+                    expect(vm.state.value) == GameVM.GameState.moveInProgress(previous: vm.gamePlan[0][0])
                 }
                 
                 context("and not matching card is selected") {
+                    
                     beforeEach {
                         vm.flipCard(row: 1, collumn: 0)
                     }
                     
                     it("should update game state to resolving") {
-                        expect(vm.state).toEventually(equal(GameVM.GameState.resolving))
+                        expect(vm.state.value).toEventually(equal(GameVM.GameState.resolving))
                     }
 
                     it("should eventually update game state to regular") {
-                        expect(vm.state).toEventually(equal(GameVM.GameState.regular))
+                        expect(vm.state.value).toEventually(equal(GameVM.GameState.regular))
                     }
                     
                     it("should eventually reset both card to regular state") {
@@ -136,11 +139,11 @@ class GameVMTests: QuickSpec {
                     }
                     
                     it("should update game state to resolving") {
-                        expect(vm.state).toEventually(equal(GameVM.GameState.resolving))
+                        expect(vm.state.value).toEventually(equal(GameVM.GameState.resolving))
                     }
                     
                     it("should eventually update game state to regular") {
-                        expect(vm.state).toEventually(equal(GameVM.GameState.regular))
+                        expect(vm.state.value).toEventually(equal(GameVM.GameState.regular))
                     }
                     
                     it("should keep both card in flipped state") {
@@ -169,16 +172,17 @@ class GameVMTests: QuickSpec {
                 }
                 
                 context("and matching card is selected") {
+                    
                     beforeEach {
                         vm.flipCard(row: 1, collumn: 1)
                     }
                     
                     it("should update game state to resolving") {
-                        expect(vm.state).toEventually(equal(GameVM.GameState.resolving))
+                        expect(vm.state.value).toEventually(equal(GameVM.GameState.resolving))
                     }
                     
                     it("should eventually update game state to finished") {
-                        expect(vm.state).toEventually(equal(GameVM.GameState.finished))
+                        expect(vm.state.value).toEventually(equal(GameVM.GameState.finished))
                     }
                     
                     it("should keep both card in flipped state") {
@@ -189,6 +193,5 @@ class GameVMTests: QuickSpec {
             }
 
         }
-
     }
 }

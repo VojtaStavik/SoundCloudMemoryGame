@@ -4,10 +4,7 @@ import ReactiveSwift
 
 class MainAppFlow {
     
-    private let window: UIWindow
-    private let navigationController: UINavigationController
-    
-    private let gameSettings = SCGameSettings()
+    // MARK: --=== Public ==---
     
     init(window: UIWindow) {
         self.window = window
@@ -28,11 +25,20 @@ class MainAppFlow {
             }
     }
     
+    // MARK: --=== Private ==---
+
+    private let window: UIWindow
+    private let navigationController: UINavigationController
+    
+    private let gameSettings = SCGameSettings()
+    
+    
     // Step 1 - GameSetupVC
     private func setup(gameSetupVC vc: GameSetupVC) {
         vc.viewModel = GameSetupVM(api: api)
         vc.gameSettings = gameSettings
     }
+    
     
     // Step 2 - GameVC
     private func showGameVC(imageStore: ImageStore) {
@@ -50,12 +56,14 @@ class MainAppFlow {
     private lazy var gateway: Gateway = SCGateway(session: URLSession(configuration: .default))
 }
 
+
 extension MainAppFlow {
-    func createGameSetupVC() -> GameSetupVC {
+    
+    fileprivate func createGameSetupVC() -> GameSetupVC {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameSetupVC") as! GameSetupVC
     }
 
-    func createGameVC() -> GameVC {
+    fileprivate func createGameVC() -> GameVC {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameVC") as! GameVC
     }
 }

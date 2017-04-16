@@ -15,6 +15,7 @@ class GameVCTests: QuickSpec {
             var vc: GameVC!
             
             describe("with 4 cards") {
+                
                 beforeEach {
                     vm = GameVMMock()
                     vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameVC") as! GameVC
@@ -33,6 +34,7 @@ class GameVCTests: QuickSpec {
                 }
                 
                 context("when 2 card are flipped") {
+                    
                     beforeEach {
                         vm.mockGamePlan[0][0].flip()
                         vm.mockGamePlan[1][0].flip()
@@ -44,6 +46,7 @@ class GameVCTests: QuickSpec {
                 }
 
                 context("when all cards are flipped") {
+                    
                     beforeEach {
                         vm.mockGamePlan[0][0].flip()
                         vm.mockGamePlan[1][0].flip()

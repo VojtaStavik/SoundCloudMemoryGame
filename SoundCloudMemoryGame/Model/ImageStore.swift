@@ -1,7 +1,7 @@
 
 import UIKit
 
-// Since we don't need any persitence, simple Dictionary is enough for ImageStore
+// Since we don't need any persistence for now, simple Dictionary is enough for ImageStore
 
 typealias ImageStore = Dictionary<ImageID, UIImage>
 

@@ -11,6 +11,7 @@ class APIMock: API {
     /// Exposed observer from the getImagesURLs function
     var getImagesURLObserver: Observer<[URL], SoundCloudMemoryGame.Error>?
     var getImagesURLsCount: Int?
+    
     func getImagesURLs(count: Int) -> SignalProducer<[URL], SoundCloudMemoryGame.Error> {
         return SignalProducer { observer, _ in
             self.getImagesURLsCount = count

@@ -3,6 +3,8 @@ import UIKit
 
 class CardView: UIView {
     
+    // MARK: --=== Public ==---
+
     convenience init(image: UIImage) {
         self.init(frame: .zero)
         self.image = image
@@ -50,6 +52,9 @@ class CardView: UIView {
                           options: [.transitionFlipFromRight, .showHideTransitionViews],
                           completion: nil)
     }
+    
+    
+    // MARK: --=== Private ==---
     
     private var image: UIImage!
     

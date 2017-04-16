@@ -32,6 +32,7 @@ struct SCGameSettings: GameSettings {
 
 /// Custom compare function for tests
 extension Dictionary where Key == CardCount, Value == Grid {
+    
     static func == (l: Dictionary<Key,Value>, r: Dictionary<Key,Value>) -> Bool {
         if l.count != r.count {
             return false

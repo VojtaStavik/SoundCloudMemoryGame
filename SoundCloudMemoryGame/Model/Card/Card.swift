@@ -2,9 +2,9 @@
 import UIKit
 import ReactiveSwift
 
-// Card is in fact more a view model for CardView then a model itself.
-
 class Card {
+    
+    // MARK: --=== Public ==---
     
     lazy var state: Property<State> = Property(self._state)
     
@@ -38,6 +38,7 @@ class Card {
     }
     
     var matchAnimationClosure: (() -> Void)? = nil
+    
     
     // MARK: --=== Private ==---
     

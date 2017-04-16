@@ -9,29 +9,16 @@ class GameSetupVC: UIViewController {
     
     var gameSettings: GameSettings!
     
-    var viewModel: GameSetupVM! {
-        didSet {
-            // Setup bindings
-            viewModel.state.producer
-                .observe(on: UIScheduler())
-                .startWithValues { [unowned self] (state) in
-                    self.isLoadingIndicatorVisible = (state == .loadingImages)
-                    
-                    if case let .error(error) = state {
-                        self.showAlert(for: error)
-                    }
-            }
-        }
-    }
+    var viewModel: GameSetupVM!
 
     
     // MARK: --=== Public ==---
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = NSLocalizedString("Memory Game", comment: "Game setup controller title")
         
+        setupVMBindings()
         prepareButtons(values: gameSettings.availableGames.keys.sorted())
     }
 
@@ -53,6 +40,19 @@ class GameSetupVC: UIViewController {
             let button = UIButton.createChooseCountButton(for: value)
             button.addTarget(self, action: #selector(pressButtonAction(_:)), for: .touchUpInside)
             buttonBar.addArrangedSubview(button)
+        }
+    }
+    
+    fileprivate func setupVMBindings() {
+        // Setup bindings
+        viewModel.state.producer
+            .observe(on: UIScheduler())
+            .startWithValues { [unowned self] (state) in
+                self.isLoadingIndicatorVisible = (state == .loadingImages)
+                
+                if case let .error(error) = state {
+                    self.showAlert(for: error)
+                }
         }
     }
 }

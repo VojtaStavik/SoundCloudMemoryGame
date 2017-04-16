@@ -12,7 +12,7 @@ protocol API {
 }
 
 extension API {
-    /// Combined producer which downloads available iamge URLs and prepare ImageStore with them
+    /// Combined producer which downloads available iamges' URLs and prepare ImageStore with them
     func fetchImageURLsAndPrepareImageStore(count: Int) -> SignalProducer<ImageStore, Error> {
         return getImagesURLs(count: count)
             .flatMap(.concat, transform: downloadImages)

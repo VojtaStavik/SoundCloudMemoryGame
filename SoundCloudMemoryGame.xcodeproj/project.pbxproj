@@ -26,7 +26,6 @@
 		D84DC0A51EA13058000DE3DE /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84DC0801EA11997000DE3DE /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D84DC0AF1EA15020000DE3DE /* apiMockResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D84DC0AE1EA15020000DE3DE /* apiMockResponse.json */; };
 		D84DC0C01EA160E3000DE3DE /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0B31EA160E3000DE3DE /* APITests.swift */; };
-		D84DC0C31EA160E3000DE3DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84DC0B61EA160E3000DE3DE /* LaunchScreen.storyboard */; };
 		D84DC0C71EA160E3000DE3DE /* GatewayMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0BC1EA160E3000DE3DE /* GatewayMocks.swift */; };
 		D84DC0C81EA160E3000DE3DE /* GatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0BD1EA160E3000DE3DE /* GatewayTests.swift */; };
 		D84DC0D01EA1615C000DE3DE /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC0CF1EA1615C000DE3DE /* ImageStore.swift */; };
@@ -68,6 +67,7 @@
 		D8ECA5261EA3AA6500F6067B /* ReferenceImages in Resources */ = {isa = PBXBuildFile; fileRef = D8ECA5251EA3AA6500F6067B /* ReferenceImages */; };
 		D8ECA5281EA3AC6E00F6067B /* GameVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8ECA5271EA3AC6E00F6067B /* GameVCTests.swift */; };
 		D8F93FE31EA3B94A0013437F /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F93FE21EA3B94A0013437F /* Animations.swift */; };
+		D8F940111EA3C8A10013437F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84DC0B61EA160E3000DE3DE /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,7 +149,7 @@
 		D84DC0F31EA253D7000DE3DE /* ChooseCountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCountButton.swift; sourceTree = "<group>"; };
 		D84DC0F61EA25441000DE3DE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D84DC0FA1EA258C4000DE3DE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		D84DC0FC1EA25D2D000DE3DE /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		D84DC0FC1EA25D2D000DE3DE /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alerts.swift; path = ../Errors/Alerts.swift; sourceTree = "<group>"; };
 		D84DC0FF1EA25F85000DE3DE /* MainAppFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAppFlow.swift; sourceTree = "<group>"; };
 		D84DC1021EA26C8C000DE3DE /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		D84DC1051EA26F94000DE3DE /* GameVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
@@ -160,10 +160,10 @@
 		D84DC1131EA297AC000DE3DE /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		D84DC1151EA2A0B0000DE3DE /* PinToSuperview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinToSuperview.swift; sourceTree = "<group>"; };
 		D84DC1171EA36A3B000DE3DE /* GameVMMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVMMocks.swift; sourceTree = "<group>"; };
-		D84DC11A1EA37444000DE3DE /* HaveValidSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HaveValidSnapshot.swift; path = SoundCloudMemoryGame/HaveValidSnapshot.swift; sourceTree = SOURCE_ROOT; };
+		D84DC11A1EA37444000DE3DE /* HaveValidSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaveValidSnapshot.swift; sourceTree = "<group>"; };
 		D84DC11D1EA37469000DE3DE /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
-		D84DC1201EA374F3000DE3DE /* NimbleSnapshotsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NimbleSnapshotsConfiguration.swift; path = SoundCloudMemoryGame/NimbleSnapshotsConfiguration.swift; sourceTree = SOURCE_ROOT; };
-		D84DC1231EA37722000DE3DE /* Snaphots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Snaphots.swift; path = SoundCloudMemoryGame/Snaphots.swift; sourceTree = SOURCE_ROOT; };
+		D84DC1201EA374F3000DE3DE /* NimbleSnapshotsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NimbleSnapshotsConfiguration.swift; sourceTree = "<group>"; };
+		D84DC1231EA37722000DE3DE /* Snaphots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snaphots.swift; sourceTree = "<group>"; };
 		D8ECA5251EA3AA6500F6067B /* ReferenceImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ReferenceImages; sourceTree = "<group>"; };
 		D8ECA5271EA3AC6E00F6067B /* GameVCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVCTests.swift; sourceTree = "<group>"; };
 		D8F93FE21EA3B94A0013437F /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
@@ -245,20 +245,17 @@
 		D84DC0B11EA160E3000DE3DE /* SoundCloudMemoryGame */ = {
 			isa = PBXGroup;
 			children = (
-				D84DC10C1EA273DE000DE3DE /* Helpers */,
 				D84DC0FE1EA25F73000DE3DE /* Flows */,
-				D84DC0CE1EA16110000DE3DE /* Errors */,
+				D84DC0E01EA21EE5000DE3DE /* Scenes */,
 				D84DC0F01EA24959000DE3DE /* GameSettings */,
+				D84DC0F51EA25437000DE3DE /* Appearance */,
 				D84DC0CA1EA160EC000DE3DE /* Model */,
 				D84DC0CD1EA16106000DE3DE /* Networking */,
-				D84DC0E01EA21EE5000DE3DE /* Scenes */,
-				D84DC0F51EA25437000DE3DE /* Appearance */,
-				D84DC0B41EA160E3000DE3DE /* AppDelegate.swift */,
-				D84DC0B51EA160E3000DE3DE /* Assets.xcassets */,
-				D84DC0BE1EA160E3000DE3DE /* Info.plist */,
-				D84DC0B61EA160E3000DE3DE /* LaunchScreen.storyboard */,
+				D84DC0CE1EA16110000DE3DE /* Errors */,
+				D84DC10C1EA273DE000DE3DE /* Helpers */,
+				D8F940121EA3C8B30013437F /* SupportingFiles */,
+				D8F93FE41EA3C6120013437F /* Resources */,
 				D84DC0B81EA160E3000DE3DE /* Main.storyboard */,
-				D84DC0FA1EA258C4000DE3DE /* main.swift */,
 			);
 			path = SoundCloudMemoryGame;
 			sourceTree = "<group>";
@@ -305,7 +302,6 @@
 			isa = PBXGroup;
 			children = (
 				D84DC0BA1EA160E3000DE3DE /* Errors.swift */,
-				D84DC0FC1EA25D2D000DE3DE /* Alerts.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -414,6 +410,7 @@
 		D84DC10C1EA273DE000DE3DE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D84DC0FC1EA25D2D000DE3DE /* Alerts.swift */,
 				D84DC10D1EA273F6000DE3DE /* CollectionShuffle.swift */,
 				D84DC1151EA2A0B0000DE3DE /* PinToSuperview.swift */,
 				D84DC1251EA37728000DE3DE /* Snapshots */,
@@ -445,7 +442,26 @@
 				D84DC1201EA374F3000DE3DE /* NimbleSnapshotsConfiguration.swift */,
 				D84DC11A1EA37444000DE3DE /* HaveValidSnapshot.swift */,
 			);
-			name = Snapshots;
+			path = Snapshots;
+			sourceTree = "<group>";
+		};
+		D8F93FE41EA3C6120013437F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0B51EA160E3000DE3DE /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D8F940121EA3C8B30013437F /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0B41EA160E3000DE3DE /* AppDelegate.swift */,
+				D84DC0BE1EA160E3000DE3DE /* Info.plist */,
+				D84DC0B61EA160E3000DE3DE /* LaunchScreen.storyboard */,
+				D84DC0FA1EA258C4000DE3DE /* main.swift */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,6 +553,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F940111EA3C8A10013437F /* LaunchScreen.storyboard in Resources */,
 				D84DC0D81EA16316000DE3DE /* Main.storyboard in Resources */,
 				D84DC0D71EA1630F000DE3DE /* Assets.xcassets in Resources */,
 			);
@@ -546,7 +563,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D84DC0C31EA160E3000DE3DE /* LaunchScreen.storyboard in Resources */,
 				D84DC0DC1EA16D51000DE3DE /* paul.jpg in Resources */,
 				D84DC0AF1EA15020000DE3DE /* apiMockResponse.json in Resources */,
 				D84DC0DD1EA16D51000DE3DE /* ringo.jpg in Resources */,
@@ -745,7 +761,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = SoundCloudMemoryGame/Info.plist;
+				INFOPLIST_FILE = SoundCloudMemoryGame/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VojtaStavik.SoundCloudMemoryGame;
@@ -768,7 +784,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = SoundCloudMemoryGame/Info.plist;
+				INFOPLIST_FILE = SoundCloudMemoryGame/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VojtaStavik.SoundCloudMemoryGame;

@@ -2,6 +2,7 @@
 import UIKit
 
 extension UIView {
+    /// Pins the view's frame to its superview bounds
     func pinToSuperview() {
         guard let superview = superview else {
             fatalError("View has no superview")

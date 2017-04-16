@@ -11,19 +11,19 @@ protocol Gateway {
 
 extension Gateway {
     
-    /// Convenience function whitch tries to parse the returning data to JSON
+    /// Convenience function witch tries to parse the returning data to JSON
     func call(url: URL, method: GatewayMethod) -> SignalProducer<JSON, Error> {
-        return call(url: url, method: method).attemptMap { (data) -> Result<JSON, Error> in
-            
-            var error: NSError?
-            let json = JSON(data: data, error: &error)
-            
-            if error != nil{
-                return .failure(.gateway(.invalidJSON))
-            } else {
-                return .success(json)
+        return call(url: url, method: method)
+            .attemptMap { (data) -> Result<JSON, Error> in
+                var error: NSError?
+                let json = JSON(data: data, error: &error)
+                
+                if error != nil{
+                    return .failure(.gateway(.invalidJSON))
+                } else {
+                    return .success(json)
+                }
             }
-        }
     }
 }
 

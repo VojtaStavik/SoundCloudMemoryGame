@@ -1,6 +1,7 @@
 
 import UIKit
 
+// Helper extensions for more convenient work with alerts
 extension UIAlertController {
     
     static func showAlert(with title: String, message: String, from vc: UIViewController, completion: (() -> Void)?) {

@@ -11,7 +11,7 @@ class GameVM {
         self.gameSettings = gameSettings
     }
 
-    /// GamePlan of the current game.
+    /// GamePlan of the current game
     lazy var gamePlan: [[Card]] = {
         
         var allImages: [(ImageID, UIImage)] = []
@@ -122,6 +122,7 @@ class GameVM {
 
 
 extension GameVM.GameState: Equatable {
+    
     static func == (l: GameVM.GameState, r: GameVM.GameState) -> Bool {
         switch (l, r) {
         case (.regular, .regular),

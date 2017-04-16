@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,44 +22,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="QRe-Xc-dEa">
-                                <rect key="frame" x="58" y="64" width="259" height="259.5"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="QRe-Xc-dEa">
+                                <rect key="frame" x="58" y="20" width="259" height="259"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QRe-Xc-dEa" secondAttribute="height" multiplier="1:1" id="PQ9-Sf-zBe"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e9b-H3-oSG">
-                                <rect key="frame" x="16" y="408" width="343" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7QU-Lw-rJA">
+                                <rect key="frame" x="115" y="292.5" width="145.5" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ta-x2-S72">
+                                        <rect key="frame" x="0.0" y="0.5" width="117.5" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="x23-u3-2RU">
+                                        <rect key="frame" x="125.5" y="0.5" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose number of cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBP-E1-E6u">
-                                <rect key="frame" x="93" y="355.5" width="189" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="x23-u3-2RU">
-                                <rect key="frame" x="177" y="470" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ta-x2-S72">
-                                <rect key="frame" x="129.5" y="498" width="117.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="CYh-ff-XPP">
+                                <rect key="frame" x="16" y="328.5" width="343" height="74.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose number of cards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBP-E1-E6u">
+                                        <rect key="frame" x="0.0" y="0.5" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e9b-H3-oSG">
+                                        <rect key="frame" x="0.0" y="45" width="343" height="30"/>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QRe-Xc-dEa" firstAttribute="top" secondItem="egO-4R-XvP" secondAttribute="bottom" id="3dT-Q9-dak"/>
+                            <constraint firstItem="CYh-ff-XPP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="QRe-Xc-dEa" secondAttribute="bottom" constant="32" id="9n3-oE-lag"/>
                             <constraint firstItem="QRe-Xc-dEa" firstAttribute="centerX" secondItem="Ky0-02-5NK" secondAttribute="centerX" id="9nI-vR-g6d"/>
-                            <constraint firstItem="sBP-E1-E6u" firstAttribute="centerX" secondItem="Ky0-02-5NK" secondAttribute="centerX" id="DEM-v1-koF"/>
-                            <constraint firstItem="5ta-x2-S72" firstAttribute="centerX" secondItem="Ky0-02-5NK" secondAttribute="centerX" id="JSc-x0-tvm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="e9b-H3-oSG" secondAttribute="trailing" id="MdG-xH-jXh"/>
-                            <constraint firstItem="x23-u3-2RU" firstAttribute="centerX" secondItem="Ky0-02-5NK" secondAttribute="centerX" id="Nyh-xJ-gOi"/>
-                            <constraint firstItem="e9b-H3-oSG" firstAttribute="top" secondItem="sBP-E1-E6u" secondAttribute="bottom" constant="32" id="Y2x-eU-daa"/>
-                            <constraint firstItem="e9b-H3-oSG" firstAttribute="leading" secondItem="Ky0-02-5NK" secondAttribute="leadingMargin" id="gZy-Yy-E1c"/>
-                            <constraint firstItem="x23-u3-2RU" firstAttribute="top" secondItem="e9b-H3-oSG" secondAttribute="bottom" constant="32" id="gm3-uB-3XX"/>
-                            <constraint firstItem="5ta-x2-S72" firstAttribute="top" secondItem="x23-u3-2RU" secondAttribute="bottom" constant="8" id="utm-Bh-DoL"/>
-                            <constraint firstItem="sBP-E1-E6u" firstAttribute="centerY" secondItem="Ky0-02-5NK" secondAttribute="centerY" constant="32" id="zzG-Vl-vvW"/>
+                            <constraint firstItem="CYh-ff-XPP" firstAttribute="top" secondItem="7QU-Lw-rJA" secondAttribute="bottom" constant="16" id="F1S-q2-eGe"/>
+                            <constraint firstItem="CYh-ff-XPP" firstAttribute="trailing" secondItem="Ky0-02-5NK" secondAttribute="trailing" constant="-16" id="GuV-Jf-oAf"/>
+                            <constraint firstItem="7QU-Lw-rJA" firstAttribute="centerX" secondItem="Ky0-02-5NK" secondAttribute="centerX" id="YW8-Qo-3eH"/>
+                            <constraint firstItem="CYh-ff-XPP" firstAttribute="centerY" secondItem="Ky0-02-5NK" secondAttribute="centerY" priority="750" constant="32" id="dOZ-q6-5sd"/>
+                            <constraint firstItem="CYh-ff-XPP" firstAttribute="leading" secondItem="Ky0-02-5NK" secondAttribute="leading" constant="16" id="mfy-1a-LXG"/>
+                            <constraint firstItem="P9E-TC-IIk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="CYh-ff-XPP" secondAttribute="bottom" constant="32" id="quD-N6-I77"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Memory Game" id="k5g-ON-uuZ"/>
@@ -72,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OeT-px-iI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-468" y="-86"/>
+            <point key="canvasLocation" x="-550" y="-131"/>
         </scene>
         <!--GameVC-->
         <scene sceneID="wkn-is-Paq">
