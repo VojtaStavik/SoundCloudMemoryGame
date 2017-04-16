@@ -24,3 +24,4 @@ xcuserdata/
 *.dSYM
 
 Carthage/Checkouts
+Carthage/Build
