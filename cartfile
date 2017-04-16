@@ -1,4 +1,8 @@
+# App
 github "ReactiveCocoa/ReactiveCocoa" ~> 5.0
-github "Quick/Quick"
-github "Quick/Nimble"
-github "SwiftyJSON/SwiftyJSON"
+github "SwiftyJSON/SwiftyJSON" ~> 3.1
+
+# Tests
+github "Quick/Quick" ~> 1.1
+github "Quick/Nimble" ~> 6.1
+github "facebook/ios-snapshot-test-case" ~> 2.1

@@ -21,7 +21,7 @@ class MainAppFlow {
         
         gameSetupVC.viewModel.state.producer
             .observe(on: UIScheduler())
-            .startWithValues { [unowned self, unowned gameSetupVC] (state) in
+            .startWithValues { [unowned self] (state) in
                 if case let .imagesReady(imageStore) = state {
                     self.showGameVC(imageStore: imageStore)
                 }

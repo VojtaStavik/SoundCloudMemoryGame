@@ -56,14 +56,6 @@ class GameSetupVCTests: QuickSpec {
                 }
             }
             
-            it("should prepare the choose count buttons based on the game settings") {
-                let buttons = vc.buttonBar.arrangedSubviews as! [UIButton]
-                
-                expect(buttons.count) == 2
-                expect(buttons[0].titleLabel!.text) == "4"
-                expect(buttons[1].titleLabel!.text) == "8"
-            }
-            
             context("when a button is pressed") {
                 beforeEach {
                     let buttons = vc.buttonBar.arrangedSubviews as! [UIButton]
@@ -74,6 +66,68 @@ class GameSetupVCTests: QuickSpec {
                     expect(vm.prepareGameCalledWithNumber) == 4
                 }
             }
+        }
+
+        
+        describe("GameSetupVC") {
+            
+            context("when GameSettings has 2 supported games") {
+
+                struct GameSettingsMock: GameSettings {
+                    let supportedGrids: [Grid] = [
+                        (collums: 2, rows: 4),
+                        (collums: 2, rows: 2),
+                        ]
+                }
+                
+                var vm: GameSetupVMMock!
+                var vc: GameSetupVC!
+                
+                beforeEach {
+                    vm = GameSetupVMMock()
+                    vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameSetupVC") as! GameSetupVC
+                    
+                    vc.viewModel = vm
+                    vc.gameSettings = GameSettingsMock()
+                    
+                    // prepare VC
+                    vc.prepareForSnapshot()
+                }
+                
+                it("should have valid snapshot") {
+                    compareSnapshot(vc.view, recordReferenceSnapshot: false)
+                }
+            }
+
+            context("when GameSettings has 4 supported games") {
+                
+                struct GameSettingsMock: GameSettings {
+                    let supportedGrids: [Grid] = [
+                        (collums: 2, rows: 4),
+                        (collums: 2, rows: 2),
+                        (collums: 2, rows: 5),
+                        (collums: 2, rows: 6),
+                        ]
+                }
+                
+                var vm: GameSetupVMMock!
+                var vc: GameSetupVC!
+                
+                beforeEach {
+                    vm = GameSetupVMMock()
+                    vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameSetupVC") as! GameSetupVC
+                    
+                    vc.viewModel = vm
+                    vc.gameSettings = GameSettingsMock()
+                    
+                    vc.prepareForSnapshot()
+                }
+                
+                it("should have valid snapshot") {
+                    compareSnapshot(vc.view, recordReferenceSnapshot: false)
+                }
+            }
+
         }
     }
 }

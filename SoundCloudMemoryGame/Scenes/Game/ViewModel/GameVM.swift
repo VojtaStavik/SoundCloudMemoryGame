@@ -48,7 +48,13 @@ class GameVM {
     
     
     func flipCard(row: Int, collum: Int) {
-        updateGameState(with: gamePlan[row][collum])
+        let card = gamePlan[row][collum]
+        guard card.isFlipped == false else {
+            // Ignore flips on already flipped cards
+            return
+        }
+        
+        updateGameState(with: card)
     }
     
     // MARK: --=== Private ==---
