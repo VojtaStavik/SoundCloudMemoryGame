@@ -22,3 +22,26 @@ After the installation, run the following command in the root directory of the p
 carthage bootstrap --platform iOS --no-use-binaries
 ```
 When Carthage install all dependencies, you can open ```SoundCloudMemoryGame.xcodeproj``` and run the project.
+
+
+### Architecture
+
+When possible (and suitable), SoundCloudMemoryGame follows MVVM architecture and functional reactive programming principles. [ReactiveSwift](https://github.com/ReactiveCocoa/ReactiveSwift/) is used in the majority of the app to make the code simpler and more expressive.
+
+### Project structure
+
+Instead of having root folders like ```ViewControllers``` ```Views``` etc. with all view controllers and view inside them, I decided to group them according to the scene they belong to. It's much easier to work on the particular scene when all the elements are at the one place. Elements, which are meant to be reusable, are then located inside corresponding root folders.
+
+![Project structure](/Doc/structure.png)
+
+**Tests are first class citizens!** Inspired by this interesting [article](https://kickstarter.engineering/why-you-should-co-locate-your-xcode-tests-c69f79211411), I placed test files to the same folder as the implementation files. It's much easier to work on a given class when you don't have to jump in and out in the project structure.
+
+### Testing
+
+The project has two levels of tests:
+
+#### Behavior tests
+The project uses [Quick](https://github.com/Quick/Quick) for behavior-driven testing and [Nimble](https://github.com/Quick/Nimble) as a matcher framework. Behavioral tests are focused on testing the proper behavior of the system. They are used mainly for non-view classes.
+
+#### Snapshot tests
+Snapshot tests are meant to be used for testing views. The project uses [FBSnapshotTestCase](https://github.com/facebook/ios-snapshot-test-case) for generating and comparing snapshots. For seamless integration with Quick, there's [Nimble-Snapshots](https://github.com/ashfurrow/Nimble-Snapshots),  a Nimble matcher wrapping FBSnapshotTestCase.
