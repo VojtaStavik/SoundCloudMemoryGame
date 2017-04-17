@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,13 +31,13 @@
                                 <rect key="frame" x="115" y="292.5" width="145.5" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ta-x2-S72">
-                                        <rect key="frame" x="0.0" y="0.5" width="117.5" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="x23-u3-2RU">
-                                        <rect key="frame" x="125.5" y="0.5" width="20" height="20"/>
+                                        <rect key="frame" x="125.5" y="0.0" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                             </stackView>
@@ -46,13 +45,13 @@
                                 <rect key="frame" x="16" y="328.5" width="343" height="74.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose number of cards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBP-E1-E6u">
-                                        <rect key="frame" x="0.0" y="0.5" width="343" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e9b-H3-oSG">
-                                        <rect key="frame" x="0.0" y="45" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="343" height="30"/>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -70,7 +69,9 @@
                             <constraint firstItem="P9E-TC-IIk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="CYh-ff-XPP" secondAttribute="bottom" constant="32" id="quD-N6-I77"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Memory Game" id="k5g-ON-uuZ"/>
+                    <navigationItem key="navigationItem" title="Memory Game" id="k5g-ON-uuZ">
+                        <barButtonItem key="backBarButtonItem" title="Quit game" id="txM-7S-vdW"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="x23-u3-2RU" id="GFN-J8-XI3"/>
                         <outlet property="buttonBar" destination="e9b-H3-oSG" id="Unj-BI-mZd"/>

@@ -5,6 +5,7 @@ typealias Games = [CardCount: Grid]
 typealias Grid = (collumns: Int, rows: Int)
 typealias CardCount = Int
 
+/// GameSettings provides supported game configurations
 protocol GameSettings {
     var supportedGrids: [Grid] { get }
 }

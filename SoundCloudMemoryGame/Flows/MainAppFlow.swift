@@ -18,9 +18,9 @@ class MainAppFlow {
         
         gameSetupVC.viewModel.state.producer
             .observe(on: UIScheduler())
-            .startWithValues { [unowned self] (state) in
+            .startWithValues { [weak self] (state) in
                 if case let .imagesReady(imageStore) = state {
-                    self.showGameVC(imageStore: imageStore)
+                    self?.showGameVC(imageStore: imageStore)
                 }
             }
     }
@@ -39,14 +39,8 @@ class MainAppFlow {
         vc.gameSettings = gameSettings
     }
     
-    
     // Step 2 - GameVC
     private func showGameVC(imageStore: ImageStore) {
-        // Set cutom text for the back button
-        let backItem = UIBarButtonItem()
-        backItem.title = NSLocalizedString("Quit game", comment: "GameVC back button title")
-        navigationController.viewControllers.first?.navigationItem.backBarButtonItem = backItem
-        
         let vc = createGameVC()
         vc.viewModel = GameVM(imageStore: imageStore, gameSettings: gameSettings)
         navigationController.pushViewController(vc, animated: true)

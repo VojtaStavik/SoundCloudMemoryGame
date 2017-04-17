@@ -46,7 +46,7 @@ struct SCAPI: API {
         
         return combinedProducer
             .flatten(.concat)
-            .reduce(ImageStore(), +)
+            .reduce(ImageStore(), Dictionary.merge)
             .mapError { _ in return .api(.cantDownloadImages) }
     }
     
