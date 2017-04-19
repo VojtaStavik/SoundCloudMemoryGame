@@ -21,7 +21,10 @@ After the installation, run the following command in the root directory of the p
 ```bash
 carthage bootstrap --platform iOS --no-use-binaries
 ```
-When Carthage install all dependencies, you can open ```SoundCloudMemoryGame.xcodeproj``` and run the project.
+When Carthage install all dependencies, you can open ```SoundCloudMemoryGame.xcodeproj```. 
+
+⚠️ ** SoundCloudAPI Client ID ** ⚠️
+Before running the project, make sure to add the value for ```SCAPIClientID``` key into the ```info.plist``` file.
 
 
 ### Architecture

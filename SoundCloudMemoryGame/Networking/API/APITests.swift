@@ -12,12 +12,14 @@ class APITests: QuickSpec {
         
         describe("SCAPI") {
             
+            let clientID: API.ClientID = "testID"
+            
             var api: API!
             var gateway: GatewayMock!
             
             beforeEach {
                 gateway = GatewayMock()
-                api = SCAPI(gateway: gateway)
+                api = SCAPI(gateway: gateway, clientID: clientID)
             }
             
             // MARK: --=== getImagesURLs ==---
@@ -28,8 +30,8 @@ class APITests: QuickSpec {
                     api.getImagesURLs(count: 1).start()
                 }
                 
-                it("should call Gateway with correct URL") {
-                    expect(gateway.calledURLs).to(equal([URL(string: "https://api.soundcloud.com/playlists/79670980?client_id=aa45989bb0c262788e2d11f1ea041b65")!]))
+                it("should call Gateway with correct URL and client ID") {
+                    expect(gateway.calledURLs).to(equal([URL(string: "https://api.soundcloud.com/playlists/79670980?client_id=testID")!]))
                 }
                 
                 

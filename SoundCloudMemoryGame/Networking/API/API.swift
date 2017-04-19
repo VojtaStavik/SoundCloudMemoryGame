@@ -6,7 +6,10 @@ import SwiftyJSON
 import Result
 
 protocol API {
-    init(gateway: Gateway)
+    
+    typealias ClientID = String
+    
+    init(gateway: Gateway, clientID: ClientID)
     func getImagesURLs(count: Int) -> SignalProducer<[URL], Error>
     func downloadImages(urls: [URL]) -> SignalProducer<ImageStore, Error>
 }
@@ -23,9 +26,10 @@ extension API {
 struct SCAPI: API {
     
     // MARK: --=== Public ==---
-    
-    init(gateway: Gateway) {
+
+    init(gateway: Gateway, clientID: ClientID) {
         self.gateway = gateway
+        self.clientID = clientID
     }
     
     /// Fetches URLs of available images
@@ -53,8 +57,11 @@ struct SCAPI: API {
     // MARK: --=== Private ==---
     
     fileprivate let gateway: Gateway
+    fileprivate let clientID: ClientID
     
-    fileprivate let soundCloudAPIURL = URL(string: "https://api.soundcloud.com/playlists/79670980?client_id=aa45989bb0c262788e2d11f1ea041b65")!
+    fileprivate var soundCloudAPIURL: URL {
+        return URL(string: "https://api.soundcloud.com/playlists/79670980?client_id=\(self.clientID)")!
+    }
     
     
     /// Parses response JSON to array of image to <count> URLs

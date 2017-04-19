@@ -5,8 +5,8 @@ import Foundation
 import ReactiveSwift
 
 class APIMock: API {
-    convenience init() { self.init(gateway: GatewayMock()) }
-    required init(gateway: Gateway) { }
+    convenience init() { self.init(gateway: GatewayMock(), clientID: "") }
+    required init(gateway: Gateway, clientID: ClientID) { }
     
     /// Exposed observer from the getImagesURLs function
     var getImagesURLObserver: Observer<[URL], SoundCloudMemoryGame.Error>?

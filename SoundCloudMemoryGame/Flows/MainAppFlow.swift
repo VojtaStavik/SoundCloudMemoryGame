@@ -6,7 +6,9 @@ class MainAppFlow {
     
     // MARK: --=== Public ==---
     
-    init(window: UIWindow) {
+    init(window: UIWindow, apiClientID: API.ClientID) {
+        self.apiClientID = apiClientID
+        
         self.window = window
         navigationController = UINavigationController()
         
@@ -31,6 +33,7 @@ class MainAppFlow {
     private let navigationController: UINavigationController
     
     private let gameSettings = SCGameSettings()
+    private let apiClientID: API.ClientID
     
     
     // Step 1 - GameSetupVC
@@ -52,7 +55,7 @@ class MainAppFlow {
         navigationController.pushViewController(vc, animated: true)
     }
 
-    private lazy var api: API = SCAPI(gateway: self.gateway)
+    private lazy var api: API = SCAPI(gateway: self.gateway, clientID: self.apiClientID)
     private lazy var gateway: Gateway = SCGateway(session: URLSession(configuration: .default))
 }
 
