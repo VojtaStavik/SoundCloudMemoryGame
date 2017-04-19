@@ -11,7 +11,7 @@
 
 The project uses [Carthage](https://github.com/Carthage/Carthage) for dependency management.
 
-You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+You can install Carthage with [Homebrew](http://brew.sh/) using the following commands:
 
 ```bash
 $ brew update
@@ -23,7 +23,7 @@ carthage bootstrap --platform iOS --no-use-binaries
 ```
 When Carthage install all dependencies, you can open ```SoundCloudMemoryGame.xcodeproj```. 
 
-⚠️ ** SoundCloudAPI Client ID ** ⚠️
+**⚠️ SoundCloudAPI Client ID ⚠️**
 Before running the project, make sure to add the value for ```SCAPIClientID``` key into the ```info.plist``` file.
 
 
@@ -33,11 +33,11 @@ When possible (and suitable), SoundCloudMemoryGame follows MVVM architecture and
 
 ### Project structure
 
-Instead of having root folders like ```ViewControllers``` ```Views``` etc. with all view controllers and view inside them, I decided to group them according to the scene they belong to. It's much easier to work on the particular scene when all the elements are at the one place. Elements, which are meant to be reusable, are then located inside corresponding root folders.
+Instead of having root folders like ```ViewControllers``` ```Views``` etc. with all view controllers and views inside them, I decided to group them according to the scene they belong to. It's much easier to work on the particular scene when all the elements are at the one place. Elements, which are meant to be reusable, are then located inside corresponding root folders.
 
 ![Project structure](/Doc/structure.png)
 
-**Tests are first class citizens!** Inspired by this interesting [article](https://kickstarter.engineering/why-you-should-co-locate-your-xcode-tests-c69f79211411), I placed test files to the same folder as the implementation files. It's much easier to work on a given class when you don't have to jump in and out in the project structure.
+**Tests are first class citizens!** Inspired by this interesting [article](https://kickstarter.engineering/why-you-should-co-locate-your-xcode-tests-c69f79211411), I placed test files to the same folder as the implementation files. It's much easier to work on a given class when you don't have to jump up and down in the project structure.
 
 ### Testing
 
