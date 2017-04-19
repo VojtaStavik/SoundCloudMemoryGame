@@ -7,8 +7,9 @@ class CardView: UIView {
 
     convenience init(image: UIImage) {
         self.init(frame: .zero)
+
         self.image = image
-        
+    
         addSubview(faceImageView)
         faceImageView.pinToSuperview()
         faceImageView.isHidden = true
@@ -21,12 +22,14 @@ class CardView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
+    private(set) var image: UIImage!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     func transitionToLogo() {
@@ -53,11 +56,32 @@ class CardView: UIView {
                           completion: nil)
     }
     
+    func animateMatch() {
+        UIView.animate(withDuration: AnimationTime.match/2.0,
+                       delay: 0,
+                       options: [.beginFromCurrentState],
+                       animations:
+            {
+                self.transform = CGAffineTransform(scaleX: Animation.matchAnimationScale,
+                                                       y: Animation.matchAnimationScale)
+        }) { _ in
+            
+            UIView.animate(withDuration: AnimationTime.match/2.0,
+                           delay: 0,
+                           options: [.beginFromCurrentState],
+                           animations:
+                {
+                    self.transform = CGAffineTransform.identity
+            })
+        }
+    }
+
+    var isFlipped: Bool {
+        return backImageView.isHidden
+    }
     
     // MARK: --=== Private ==---
-    
-    private var image: UIImage!
-    
+
     private lazy var faceImageView: UIImageView = {
         let imageView = UIImageView(image: self.image)
         imageView.translatesAutoresizingMaskIntoConstraints = false

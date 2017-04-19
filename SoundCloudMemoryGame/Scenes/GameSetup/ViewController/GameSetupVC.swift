@@ -37,7 +37,7 @@ class GameSetupVC: UIViewController {
     
     fileprivate func prepareButtons(values: [Int]) {
         values.forEach { (value) in
-            let button = UIButton.createChooseCountButton(for: value)
+            let button = ChooseCountButton(with: value)
             button.addTarget(self, action: #selector(pressButtonAction(_:)), for: .touchUpInside)
             buttonBar.addArrangedSubview(button)
         }
@@ -62,15 +62,8 @@ class GameSetupVC: UIViewController {
 
 extension GameSetupVC {
     
-    func pressButtonAction(_ sender: UIButton) {
-        guard
-            let buttonTitle = sender.titleLabel?.text,
-            let numberOfCards = Int(buttonTitle)
-            else {
-                fatalError("Button's title has to have a valid number.")
-        }
-        
-        viewModel.prepareGame(with: numberOfCards)
+    func pressButtonAction(_ sender: ChooseCountButton) {
+        viewModel.prepareGame(with: sender.count)
     }
     
     fileprivate func showAlert(for error: Error) {

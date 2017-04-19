@@ -12,19 +12,39 @@ class GameSettingsTests: QuickSpec {
 
             struct TestSettings: GameSettings {
                 let supportedGrids: [Grid] = [
-                    (collumns: 2, rows: 2),
-                    (collumns: 2, rows: 3)
+                    (columns: 2, rows: 2),
+                    (columns: 2, rows: 3)
                 ]
             }
             
             it("should return correct games based on supported grids") {
                 let correctGames: Games = [
-                    4: (collumns: 2, rows: 2),
-                    6: (collumns: 2, rows: 3)
+                    4: (columns: 2, rows: 2),
+                    6: (columns: 2, rows: 3)
                 ]
                 
                 expect(TestSettings().availableGames == correctGames).to(beTrue())
             }
+        }
+    }
+}
+
+/// Custom compare function for tests
+extension Dictionary where Key == CardCount, Value == Grid {
+    
+    static func == (l: Dictionary<Key,Value>, r: Dictionary<Key,Value>) -> Bool {
+        if l.count != r.count {
+            return false
+        }
+        return l.keys.reduce(true) { result, key -> Bool in
+            guard
+                let lValue = l[key],
+                let rValue = r[key]
+                else {
+                    return false
+            }
+            
+            return result && (lValue == rValue)
         }
     }
 }

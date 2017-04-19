@@ -13,8 +13,8 @@ class GameSetupVCTests: QuickSpec {
             
             struct GameSettingsMock: GameSettings {
                 let supportedGrids: [Grid] = [
-                    (collumns: 2, rows: 4),
-                    (collumns: 2, rows: 2),
+                    (columns: 2, rows: 4),
+                    (columns: 2, rows: 2),
                 ]
             }
             
@@ -58,7 +58,7 @@ class GameSetupVCTests: QuickSpec {
             
             context("when a button is pressed") {
                 beforeEach {
-                    let buttons = vc.buttonBar.arrangedSubviews as! [UIButton]
+                    let buttons = vc.buttonBar.arrangedSubviews as! [ChooseCountButton]
                     vc.pressButtonAction(buttons[0])
                 }
                 
@@ -75,8 +75,8 @@ class GameSetupVCTests: QuickSpec {
 
                 struct GameSettingsMock: GameSettings {
                     let supportedGrids: [Grid] = [
-                        (collumns: 2, rows: 4),
-                        (collumns: 2, rows: 2),
+                        (columns: 2, rows: 4),
+                        (columns: 2, rows: 2),
                         ]
                 }
                 
@@ -103,10 +103,10 @@ class GameSetupVCTests: QuickSpec {
                 
                 struct GameSettingsMock: GameSettings {
                     let supportedGrids: [Grid] = [
-                        (collumns: 2, rows: 4),
-                        (collumns: 2, rows: 2),
-                        (collumns: 2, rows: 5),
-                        (collumns: 2, rows: 6),
+                        (columns: 2, rows: 4),
+                        (columns: 2, rows: 2),
+                        (columns: 2, rows: 5),
+                        (columns: 2, rows: 6),
                         ]
                 }
                 

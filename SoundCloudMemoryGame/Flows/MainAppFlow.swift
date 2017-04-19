@@ -41,8 +41,14 @@ class MainAppFlow {
     
     // Step 2 - GameVC
     private func showGameVC(imageStore: ImageStore) {
+        guard let grid = gameSettings.availableGames[imageStore.count * 2] else {
+            fatalError("Can't find supported grid for \(imageStore.count) images.")
+        }
+
         let vc = createGameVC()
-        vc.viewModel = GameVM(imageStore: imageStore, gameSettings: gameSettings)
+        let game = Game(imageStore: imageStore, grid: grid)
+        vc.viewModel = GameVM(game: game)
+
         navigationController.pushViewController(vc, animated: true)
     }
 

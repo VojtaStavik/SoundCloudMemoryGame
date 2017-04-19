@@ -14,8 +14,10 @@ class GameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        prepareCardViews(gamePlan: viewModel.gamePlan)
-        setupVMBindings()
+        loadCardViews()
+        
+        // Setup callback when game is finished
+        viewModel.gameFinishedClosure = finishGame
     }
     
     func pressCard(sender: UITapGestureRecognizer) {
@@ -27,39 +29,32 @@ class GameVC: UIViewController {
             fatalError("Received a tap from a card not in indicies")
         }
         
-        viewModel.flipCard(row: index.row, collumn: index.collumn)
+        viewModel.flipCard(row: index.row, column: index.column)
     }
     
     
     // MARK: --=== Private ==---
 
     @IBOutlet fileprivate weak var mainStackView: UIStackView!
-    
-    private var indicies: [CardView: (row: Int, collumn: Int)] = [:]
-    
-    private func prepareCardViews(gamePlan: [[Card]]) {
 
-        for (rowIndex, cardsInRow) in gamePlan.enumerated() {
+    private var indicies: [CardView: (row: Int, column: Int)] = [:]
+    
+    private func loadCardViews() {
+        
+        for rowIndex in 0..<viewModel.numberOfRows {
             let row = createRowStackView()
             mainStackView.addArrangedSubview(row)
             
-            for (collumnIndex, card) in cardsInRow.enumerated() {
-                let cardView = createCardView(with: card)
+            for collumnIndex in  0..<viewModel.numberOfColumns {
+                
+                let cardView = viewModel.cardView(at: rowIndex, column: collumnIndex)
+                let recognizer = UITapGestureRecognizer(target: self, action: #selector(pressCard(sender:)))
+                cardView.addGestureRecognizer(recognizer)
+                
                 indicies[cardView] = (rowIndex, collumnIndex)
                 row.addArrangedSubview(cardView)
             }
         }
-    }
-    
-    private func setupVMBindings() {
-        // Observe game state
-        viewModel.state.producer
-            .observe(on: UIScheduler())
-            .startWithValues { [unowned self] (state) in
-                if case .finished = state {
-                    self.finishGame()
-                }
-            }
     }
 }
 
@@ -72,53 +67,7 @@ extension GameVC {
         stackView.spacing = mainStackView.spacing
         return stackView
     }
-    
-    fileprivate func createCardView(with card: Card) -> CardView {
-        let cardView = CardView(image: card.image)
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(pressCard(sender:)))
-        cardView.addGestureRecognizer(recognizer)
-        
-        // Bind card state updates
-        card.state.producer
-            .observe(on: UIScheduler())
-            .startWithValues { [weak cardView] (state) in
-                switch state {
-                case .regular:
-                    cardView?.transitionToLogo()
-                    
-                case .flipped:
-                    cardView?.transitionToImage()
-                }
-        }
-        
-        // Setup Match animation callback
-        card.matchAnimationClosure = animateMatch(with: cardView)
-        return cardView
-    }
-    
-    fileprivate func animateMatch(with cardView: CardView) -> () -> Void {
-        return {
-            UIView.animate(withDuration: AnimationTime.match/2.0,
-                           delay: 0,
-                           options: [.beginFromCurrentState],
-                           animations:
-                {
-                    cardView.transform = CGAffineTransform(scaleX: Animation.matchAnimationScale,
-                                                           y: Animation.matchAnimationScale)
-                }) { _ in
-                
-                UIView.animate(withDuration: AnimationTime.match/2.0,
-                               delay: 0,
-                               options: [.beginFromCurrentState],
-                               animations:
-                    {
-                        cardView.transform = CGAffineTransform.identity
-                    })
-                }
-            }
-    }
 }
-
 
 extension GameVC {
     

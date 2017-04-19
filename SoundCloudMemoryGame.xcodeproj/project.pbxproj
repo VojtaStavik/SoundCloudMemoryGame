@@ -59,12 +59,15 @@
 		D84DC1111EA27C13000DE3DE /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1101EA27C13000DE3DE /* CardTests.swift */; };
 		D84DC1141EA297AC000DE3DE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1131EA297AC000DE3DE /* CardView.swift */; };
 		D84DC1161EA2A0B0000DE3DE /* PinToSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1151EA2A0B0000DE3DE /* PinToSuperview.swift */; };
-		D84DC1191EA36A41000DE3DE /* GameVMMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1171EA36A3B000DE3DE /* GameVMMocks.swift */; };
 		D84DC11C1EA37447000DE3DE /* HaveValidSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC11A1EA37444000DE3DE /* HaveValidSnapshot.swift */; };
 		D84DC11E1EA37469000DE3DE /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC11D1EA37469000DE3DE /* FBSnapshotTestCase.framework */; };
 		D84DC11F1EA3746E000DE3DE /* FBSnapshotTestCase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84DC11D1EA37469000DE3DE /* FBSnapshotTestCase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D84DC1221EA374FA000DE3DE /* NimbleSnapshotsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1201EA374F3000DE3DE /* NimbleSnapshotsConfiguration.swift */; };
 		D84DC1261EA3774D000DE3DE /* Snaphots.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1231EA37722000DE3DE /* Snaphots.swift */; };
+		D8730C091EA67C630026422D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8730C081EA67C630026422D /* Game.swift */; };
+		D8730C0C1EA67FA00026422D /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8730C0B1EA67FA00026422D /* GameTests.swift */; };
+		D8730C0E1EA68C310026422D /* GameMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8730C0D1EA68C310026422D /* GameMocks.swift */; };
+		D8730C111EA68C760026422D /* ImageStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8730C101EA68C760026422D /* ImageStoreTests.swift */; };
 		D8ECA5261EA3AA6500F6067B /* ReferenceImages in Resources */ = {isa = PBXBuildFile; fileRef = D8ECA5251EA3AA6500F6067B /* ReferenceImages */; };
 		D8ECA5281EA3AC6E00F6067B /* GameVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8ECA5271EA3AC6E00F6067B /* GameVCTests.swift */; };
 		D8F93FE31EA3B94A0013437F /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F93FE21EA3B94A0013437F /* Animations.swift */; };
@@ -161,11 +164,14 @@
 		D84DC1101EA27C13000DE3DE /* CardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
 		D84DC1131EA297AC000DE3DE /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		D84DC1151EA2A0B0000DE3DE /* PinToSuperview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinToSuperview.swift; sourceTree = "<group>"; };
-		D84DC1171EA36A3B000DE3DE /* GameVMMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVMMocks.swift; sourceTree = "<group>"; };
 		D84DC11A1EA37444000DE3DE /* HaveValidSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaveValidSnapshot.swift; sourceTree = "<group>"; };
 		D84DC11D1EA37469000DE3DE /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		D84DC1201EA374F3000DE3DE /* NimbleSnapshotsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NimbleSnapshotsConfiguration.swift; sourceTree = "<group>"; };
 		D84DC1231EA37722000DE3DE /* Snaphots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snaphots.swift; sourceTree = "<group>"; };
+		D8730C081EA67C630026422D /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		D8730C0B1EA67FA00026422D /* GameTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
+		D8730C0D1EA68C310026422D /* GameMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMocks.swift; sourceTree = "<group>"; };
+		D8730C101EA68C760026422D /* ImageStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStoreTests.swift; sourceTree = "<group>"; };
 		D8ECA5251EA3AA6500F6067B /* ReferenceImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ReferenceImages; sourceTree = "<group>"; };
 		D8ECA5271EA3AC6E00F6067B /* GameVCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVCTests.swift; sourceTree = "<group>"; };
 		D8F93FE21EA3B94A0013437F /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
@@ -266,8 +272,9 @@
 		D84DC0CA1EA160EC000DE3DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D84DC0CF1EA1615C000DE3DE /* ImageStore.swift */,
+				D8730C0F1EA68C670026422D /* ImageStore */,
 				D84DC10F1EA27C08000DE3DE /* Card */,
+				D8730C0A1EA67C680026422D /* Game */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -404,7 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				D84DC1051EA26F94000DE3DE /* GameVM.swift */,
-				D84DC1171EA36A3B000DE3DE /* GameVMMocks.swift */,
 				D84DC10A1EA27167000DE3DE /* GameVMTests.swift */,
 			);
 			path = ViewModel;
@@ -446,6 +452,25 @@
 				D84DC11A1EA37444000DE3DE /* HaveValidSnapshot.swift */,
 			);
 			path = Snapshots;
+			sourceTree = "<group>";
+		};
+		D8730C0A1EA67C680026422D /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D8730C081EA67C630026422D /* Game.swift */,
+				D8730C0D1EA68C310026422D /* GameMocks.swift */,
+				D8730C0B1EA67FA00026422D /* GameTests.swift */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		D8730C0F1EA68C670026422D /* ImageStore */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC0CF1EA1615C000DE3DE /* ImageStore.swift */,
+				D8730C101EA68C760026422D /* ImageStoreTests.swift */,
+			);
+			name = ImageStore;
 			sourceTree = "<group>";
 		};
 		D8F93FE41EA3C6120013437F /* Resources */ = {
@@ -597,6 +622,7 @@
 				D84DC0D01EA1615C000DE3DE /* ImageStore.swift in Sources */,
 				D84DC10E1EA273F6000DE3DE /* CollectionShuffle.swift in Sources */,
 				D84DC0E31EA21F90000DE3DE /* GameSetupVM.swift in Sources */,
+				D8730C091EA67C630026422D /* Game.swift in Sources */,
 				D84DC0FD1EA25D2D000DE3DE /* Alerts.swift in Sources */,
 				D84DC1061EA26F94000DE3DE /* GameVM.swift in Sources */,
 				D84DC0F41EA253D7000DE3DE /* ChooseCountButton.swift in Sources */,
@@ -615,13 +641,15 @@
 				D84DC0EB1EA23D96000DE3DE /* GameSetupVMMock.swift in Sources */,
 				D84DC1261EA3774D000DE3DE /* Snaphots.swift in Sources */,
 				D84DC0E51EA220F8000DE3DE /* GameSetupVMTests.swift in Sources */,
+				D8730C0C1EA67FA00026422D /* GameTests.swift in Sources */,
 				D84DC11C1EA37447000DE3DE /* HaveValidSnapshot.swift in Sources */,
+				D8730C111EA68C760026422D /* ImageStoreTests.swift in Sources */,
 				D84DC1221EA374FA000DE3DE /* NimbleSnapshotsConfiguration.swift in Sources */,
 				D8ECA5281EA3AC6E00F6067B /* GameVCTests.swift in Sources */,
+				D8730C0E1EA68C310026422D /* GameMocks.swift in Sources */,
 				D84DC0C01EA160E3000DE3DE /* APITests.swift in Sources */,
 				D84DC1111EA27C13000DE3DE /* CardTests.swift in Sources */,
 				D84DC0ED1EA23E51000DE3DE /* GameSetupVCTests.swift in Sources */,
-				D84DC1191EA36A41000DE3DE /* GameVMMocks.swift in Sources */,
 				D84DC0E71EA22AD3000DE3DE /* APIMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

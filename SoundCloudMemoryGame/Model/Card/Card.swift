@@ -1,7 +1,8 @@
 
-import UIKit
+import UIKit.UIImage
 import ReactiveSwift
 
+/// The Card class represents a card in the game plan.
 class Card {
     
     // MARK: --=== Public ==---

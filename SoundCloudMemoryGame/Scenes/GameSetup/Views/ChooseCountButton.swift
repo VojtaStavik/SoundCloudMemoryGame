@@ -1,16 +1,24 @@
 
 import UIKit
 
-extension UIButton {
-    static func createChooseCountButton(`for` count: Int) -> UIButton {
-        let button = UIButton(type: .system)
+class ChooseCountButton: UIButton {
+    
+    let count: Int
+    
+    init(with count: Int) {
+        self.count = count
         
-        button.setTitle("\(count)", for: .normal)
-        button.backgroundColor = Color.brand
-        button.setTitleColor(Color.darkForeground, for: .normal)
+        super.init(frame: CGRect.zero)
         
-        button.translatesAutoresizingMaskIntoConstraints = false
+        setTitle("\(count)", for: .normal)
+        backgroundColor = Color.brand
+        setTitleColor(Color.darkForeground, for: .normal)
+        setTitleColor(Color.darkForeground.withAlphaComponent(0.3), for: .highlighted)
         
-        return button
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

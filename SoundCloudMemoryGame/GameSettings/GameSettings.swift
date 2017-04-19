@@ -2,7 +2,7 @@
 import Foundation
 
 typealias Games = [CardCount: Grid]
-typealias Grid = (collumns: Int, rows: Int)
+typealias Grid = (columns: Int, rows: Int)
 typealias CardCount = Int
 
 /// GameSettings provides supported game configurations
@@ -15,7 +15,7 @@ extension GameSettings {
         return supportedGrids
             .reduce(Games()) { (result, grid) -> Games in
                 var mutableResult = result
-                mutableResult[grid.collumns * grid.rows] = grid
+                mutableResult[grid.columns * grid.rows] = grid
                 return mutableResult
             }
     }
@@ -24,29 +24,9 @@ extension GameSettings {
 /// Concrete implementation of GameSettings
 struct SCGameSettings: GameSettings {
     let supportedGrids: [Grid] = [
-        (collumns: 2, rows: 2),
-        (collumns: 2, rows: 3),
-        (collumns: 4, rows: 3),
-        (collumns: 4, rows: 4)
+        (columns: 2, rows: 2),
+        (columns: 2, rows: 3),
+        (columns: 4, rows: 3),
+        (columns: 4, rows: 4)
     ]
-}
-
-/// Custom compare function for tests
-extension Dictionary where Key == CardCount, Value == Grid {
-    
-    static func == (l: Dictionary<Key,Value>, r: Dictionary<Key,Value>) -> Bool {
-        if l.count != r.count {
-            return false
-        }
-        return l.keys.reduce(true) { result, key -> Bool in
-            guard
-                let lValue = l[key],
-                let rValue = r[key]
-            else {
-                return false
-            }
-            
-            return result && (lValue == rValue)
-        }
-    }
 }
