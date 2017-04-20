@@ -47,6 +47,7 @@ class GameSetupVC: UIViewController {
         // Setup bindings
         viewModel.state.producer
             .observe(on: UIScheduler())
+            .take(during: self.reactive.lifetime)
             .startWithValues { [unowned self] (state) in
                 self.isLoadingIndicatorVisible = (state == .loadingImages)
                 

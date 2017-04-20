@@ -1,6 +1,5 @@
 
 import UIKit
-import ReactiveSwift
 
 class GameVC: UIViewController {
     
@@ -17,7 +16,7 @@ class GameVC: UIViewController {
         loadCardViews()
         
         // Setup callback when game is finished
-        viewModel.gameFinishedClosure = finishGame
+        viewModel.gameFinishedClosure = { [unowned self] in self.finishGame() }
     }
     
     func pressCard(sender: UITapGestureRecognizer) {

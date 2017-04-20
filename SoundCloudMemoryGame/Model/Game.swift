@@ -115,6 +115,10 @@ class Game {
             _state.value  = .regular
         }
     }
+    
+    deinit {
+        print("Game deinit")
+    }
 }
 
 

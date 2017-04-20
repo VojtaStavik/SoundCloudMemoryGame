@@ -10,13 +10,14 @@ class GameVM {
         self.game = game
         
         // Observe game state
-        game.state.producer
+        let disposable = game.state.producer
             .observe(on: UIScheduler())
             .startWithValues { [unowned self] (state) in
                 if case .finished = state {
                     self.gameFinishedClosure?()
                 }
         }
+        disposables.add(disposable)
     }
 
     var numberOfRows: Int {
@@ -37,10 +38,11 @@ class GameVM {
         let card = game.gamePlan[row][column]
         let cardView = CardView(image: card.image)
 
-        card.matchAnimationClosure = cardView.animateMatch
+        card.matchAnimationClosure = { [weak cardView] in cardView?.animateMatch() }
         
         // Bind card state updates
-        card.state.producer
+        let disposable = card.state.producer
+            .take(during: cardView.reactive.lifetime)
             .observe(on: UIScheduler())
             .startWithValues { [weak cardView] (state) in
                 switch state {
@@ -52,6 +54,8 @@ class GameVM {
                 }
         }
         
+        disposables.add(disposable)
+        
         return cardView
     }
     
@@ -62,4 +66,10 @@ class GameVM {
     // MARK: --=== Private ==---
 
     private let game: Game
+    
+    private var disposables = CompositeDisposable()
+    
+    deinit {
+        disposables.dispose()
+    }
 }

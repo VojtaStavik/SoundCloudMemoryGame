@@ -33,7 +33,7 @@ class CardView: UIView {
     }
     
     func transitionToLogo() {
-        guard backImageView.isHidden else {
+        guard isFlipped else {
             return
         }
         
@@ -45,7 +45,7 @@ class CardView: UIView {
     }
     
     func transitionToImage() {
-        guard faceImageView.isHidden else {
+        guard isFlipped == false else {
             return
         }
 
@@ -100,4 +100,8 @@ class CardView: UIView {
         
         return imageView
     }()
+    
+    deinit {
+        print("CardView deinit")
+    }
 }

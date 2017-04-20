@@ -44,6 +44,11 @@ class Card {
     // MARK: --=== Private ==---
     
     fileprivate let _state: MutableProperty<State> = MutableProperty(.regular)
+    
+    deinit {
+//        var mutableSelf = self
+        print("Card deinit \(String(format: "%p", unsafeBitCast(self, to: Int.self)))")
+    }
 }
 
 extension Card {
@@ -57,7 +62,7 @@ extension Card {
 }
 
 extension Card {
-    func  matches(_ otherCard: Card) -> Bool {
+    func matches(_ otherCard: Card) -> Bool {
         return self.id == otherCard.id
     }
 }

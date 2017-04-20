@@ -20,6 +20,7 @@ class MainAppFlow {
         
         gameSetupVC.viewModel.state.producer
             .observe(on: UIScheduler())
+            .take(during: gameSetupVC.reactive.lifetime)
             .startWithValues { [weak self] (state) in
                 if case let .imagesReady(imageStore) = state {
                     self?.showGameVC(imageStore: imageStore)
