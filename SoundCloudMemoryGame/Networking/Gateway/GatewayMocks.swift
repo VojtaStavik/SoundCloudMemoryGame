@@ -2,7 +2,7 @@
 @testable import SoundCloudMemoryGame
 
 import Foundation
-import ReactiveSwift
+import RxSwift
 import SwiftyJSON
 
 // MARK: --=== Gateway mock ==---
@@ -24,30 +24,31 @@ class GatewayMock: Gateway {
     
     var responseDataForURL = [URL: Data]()
     
-    func call(url: URL, method: GatewayMethod) -> SignalProducer<Data, SoundCloudMemoryGame.Error> {
+    func call(url: URL, method: GatewayMethod) -> Observable<Data> {
         calledURLs.insert(url)
         self.method = method
         
-        return SignalProducer { observer, _ in
+        return Observable.create { observer in
             
-            // Is there specific mock response for this URL?
+            // Is there a specific mock response for this URL?
             if let data = self.responseDataForURL[url] {
-                observer.send(value: data)
-                observer.sendCompleted()
-                return
+                observer.onNext(data)
+                observer.onCompleted()
             }
             
             if let json = self.responseJSON {
-                observer.send(value: try! json.rawData())
-                observer.sendCompleted()
+                observer.onNext(try! json.rawData())
+                observer.onCompleted()
                 
             } else if let data = self.responseData {
-                observer.send(value: data)
-                observer.sendCompleted()
+                observer.onNext(data)
+                observer.onCompleted()
             
             } else if let error = self.responseError {
-                observer.send(error: error)
+                observer.onError(error)
             }
+            
+            return Disposables.create()
         }
     }
 }
@@ -79,5 +80,9 @@ class URLSessionTaskMock: URLSessionDataTask {
     override func resume() {
         // Wait 100ms and call the completion handler
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: completion ?? {} )
+    }
+    
+    override func cancel() {
+        // Empty implementation
     }
 }

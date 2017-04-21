@@ -1,6 +1,6 @@
 
 import Foundation
-import ReactiveSwift
+import RxSwift
 
 class GameSetupVM {
     
@@ -14,7 +14,7 @@ class GameSetupVM {
     }
     
     /// Indicates the state of the VM
-    private(set) lazy var state: Property<State> = Property(capturing: self._state)
+    private(set) lazy var state: Variable<State> = Variable(.default)
 
     func prepareGame(with numberOfCards: Int) {
         if numberOfCards % 2 != 0 {
@@ -25,20 +25,29 @@ class GameSetupVM {
             return
         }
         
-        _state.value = .loadingImages
+        state.value = .loadingImages
         
         api.fetchImageURLsAndPrepareImageStore(count: numberOfCards / 2)
-            .startWithResult { [weak self] (result) in
-                switch result {
-                case let .success(imageStore):
-                    self?._state.value = .imagesReady(imageStore)
-                    
-                case let .failure(error):
-                    self?._state.value = .error(error)
+            .asObservable()
+            .subscribe(onNext: { [weak self] (imageStore) in
+                self?.state.value = .imagesReady(imageStore)
+                
+            }, onError: { [weak self] (rawError) in
+                guard let error = rawError as? Error else {
+                    print("Unhandled error: \(rawError)")
+                    return
                 }
-            }
+                self?.state.value = .error(error)
+                
+            }).disposed(by: disposeBag)
     }
 
+    /// Call this function to reset the state of the VM to the intial value
+    func reset() {
+        state.value = .default
+        disposeBag = nil
+    }
+    
     init(api: API) {
         self.api = api
     }
@@ -46,9 +55,8 @@ class GameSetupVM {
     // MARK: --=== Private ==---
 
     fileprivate let api: API
-
-    /// Private mutable version of the state property
-    fileprivate let _state = MutableProperty(State.default)
+    
+    fileprivate lazy var disposeBag: DisposeBag! = DisposeBag()
 }
 
 

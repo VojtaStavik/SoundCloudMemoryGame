@@ -1,7 +1,7 @@
 
 import UIKit
-import ReactiveCocoa
-import ReactiveSwift
+import RxSwift
+import RxCocoa
 
 class GameSetupVC: UIViewController {
     
@@ -23,7 +23,16 @@ class GameSetupVC: UIViewController {
     }
 
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Reset previous state of the VM if needed
+        viewModel.reset()
+    }
+    
     // MARK: --=== Private ==---
+    
+    private lazy var disposeBag = DisposeBag()
     
     @IBOutlet weak var buttonBar: UIStackView!
     
@@ -45,16 +54,15 @@ class GameSetupVC: UIViewController {
     
     fileprivate func setupVMBindings() {
         // Setup bindings
-        viewModel.state.producer
-            .observe(on: UIScheduler())
-            .take(during: self.reactive.lifetime)
-            .startWithValues { [unowned self] (state) in
-                self.isLoadingIndicatorVisible = (state == .loadingImages)
-                
+        viewModel.state
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: {  [weak self] (state) in
+                self?.isLoadingIndicatorVisible = (state == .loadingImages)
                 if case let .error(error) = state {
-                    self.showAlert(for: error)
+                    self?.showAlert(for: error)
                 }
-        }
+            }).disposed(by: disposeBag)
     }
 }
 

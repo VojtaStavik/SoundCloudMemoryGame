@@ -1,6 +1,7 @@
 
 import UIKit
-import ReactiveSwift
+import RxSwift
+import RxCocoa
 
 class MainAppFlow {
     
@@ -18,18 +19,20 @@ class MainAppFlow {
         navigationController.viewControllers = [gameSetupVC]
         setup(gameSetupVC: gameSetupVC)
         
-        gameSetupVC.viewModel.state.producer
-            .observe(on: UIScheduler())
-            .take(during: gameSetupVC.reactive.lifetime)
-            .startWithValues { [weak self] (state) in
+        gameSetupVC.viewModel.state
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (state) in
                 if case let .imagesReady(imageStore) = state {
                     self?.showGameVC(imageStore: imageStore)
                 }
-            }
+            }).disposed(by: disposeBag)
     }
     
     // MARK: --=== Private ==---
 
+    private lazy var disposeBag = DisposeBag()
+    
     private let window: UIWindow
     private let navigationController: UINavigationController
     
@@ -71,3 +74,4 @@ extension MainAppFlow {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameVC") as! GameVC
     }
 }
+

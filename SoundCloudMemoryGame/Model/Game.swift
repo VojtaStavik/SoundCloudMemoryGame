@@ -1,6 +1,6 @@
 
 import UIKit.UIImage
-import ReactiveSwift
+import RxSwift
 
 /// The Game class completely handles the game logic.
 class Game {
@@ -50,7 +50,7 @@ class Game {
     }
     
     /// Curent state of the game
-    private(set) lazy var state: Property<State> = Property(self._state)
+    private(set) lazy var state: Variable<State> = Variable(.regular)
     
     enum State {
         case regular
@@ -64,17 +64,15 @@ class Game {
     
     private let imageStore: ImageStore
     
-    private let _state: MutableProperty<State> = MutableProperty(.regular)
-    
     private func updateState(with card: Card) {
-        switch _state.value {
+        switch state.value {
         case .regular:
             card.flip()
-            _state.value = .moveInProgress(previous: card)
+            state.value = .moveInProgress(previous: card)
             
         case .moveInProgress(previous: let previousCard):
             card.flip()
-            _state.value  = .resolving
+            state.value  = .resolving
             resolveMatch(card1: previousCard, card2: card)
             
         default:
@@ -103,21 +101,17 @@ class Game {
     private func resetCards(card1: Card, card2: Card) {
         card1.reset()
         card2.reset()
-        _state.value  = .regular
+        state.value  = .regular
     }
     
     private func checkIfFinished() {
         let unflippedCards = self.gamePlan.flatMap{ $0 }.filter{ $0.isFlipped == false }
         
         if unflippedCards.isEmpty {
-            _state.value  = .finished
+            state.value  = .finished
         } else {
-            _state.value  = .regular
+            state.value  = .regular
         }
-    }
-    
-    deinit {
-        print("Game deinit")
     }
 }
 
@@ -139,4 +133,3 @@ extension Game.State: Equatable {
         }
     }
 }
-

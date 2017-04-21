@@ -54,11 +54,11 @@ class GameSetupVMTests: QuickSpec {
                         beforeEach {
                             // Simulate successfull responses
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                api.getImagesURLObserver?.send(value: [URL(string: "first://")!])
+                                api.getImagesURLObserver?.onNext([URL(string: "first://")!])
                             }
 
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                api.downloadImagesObserver?.send(value: ["first://": self.mockImage1])
+                                api.downloadImagesObserver?.onNext(["first://": self.mockImage1])
                             }
                         }
                         
@@ -71,12 +71,12 @@ class GameSetupVMTests: QuickSpec {
                         beforeEach {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                 // First response is OK
-                                api.getImagesURLObserver?.send(value: [URL(string: "first://")!])
+                                api.getImagesURLObserver?.onNext([URL(string: "first://")!])
                             }
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                 // Second response fails
-                                api.downloadImagesObserver?.send(error: .api(.cantDownloadImages))
+                                api.downloadImagesObserver?.onError(SoundCloudMemoryGame.Error.api(.cantDownloadImages))
                             }
                         }
                         

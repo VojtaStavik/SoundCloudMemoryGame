@@ -29,7 +29,7 @@ Before running the project, make sure to add the value for ```SCAPIClientID``` k
 
 ### Architecture
 
-When possible (and suitable), SoundCloudMemoryGame follows MVVM architecture and functional reactive programming principles. [ReactiveSwift](https://github.com/ReactiveCocoa/ReactiveSwift/) is used in the majority of the app to make the code simpler and more expressive.
+When possible (and suitable), SoundCloudMemoryGame follows MVVM architecture and functional reactive programming principles. [RxSwift](https://github.com/ReactiveX/RxSwift) is used in the majority of the app to make the code simpler and more expressive.
 
 ### Project structure
 

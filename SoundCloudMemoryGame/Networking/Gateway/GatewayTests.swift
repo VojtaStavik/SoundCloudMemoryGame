@@ -5,7 +5,7 @@ import Foundation
 import Quick
 import Nimble
 import SwiftyJSON
-import Result
+import RxSwift
 
 class GatewayTests: QuickSpec {
     override func spec(){
@@ -22,6 +22,7 @@ class GatewayTests: QuickSpec {
             afterEach {
                 session.dataResponse = nil
                 session.errorResponse = nil
+                self.disposeBag = nil
             }
             
             describe("call") {
@@ -36,12 +37,10 @@ class GatewayTests: QuickSpec {
                         
                         // Make the call
                         gateway
-                            .call(url: URL(string: "http://mock")!, method: .get)
-                            .startWithResult { (result: Result<JSON, SoundCloudMemoryGame.Error>) in
-                                if case let .success(json) = result {
-                                    responseJSON = json
-                                }
-                            }
+                            .callJSON(url: URL(string: "http://mock")!, method: .get)
+                            .subscribe(onNext: { (json) in
+                                responseJSON = json
+                            }).disposed(by: self.disposeBag)
                     }
                     
                     it("should parse data to JSON") {
@@ -59,12 +58,10 @@ class GatewayTests: QuickSpec {
                         
                         // Make the call
                         gateway
-                            .call(url: URL(string: "http://mock")!, method: .get)
-                            .startWithResult { (result: Result<JSON, SoundCloudMemoryGame.Error>) in
-                                if case let .failure(error) = result {
-                                    responseError = error
-                                }
-                        }
+                            .callJSON(url: URL(string: "http://mock")!, method: .get)
+                            .subscribe(onError: { (error: Swift.Error) -> Void in
+                                responseError = error as? SoundCloudMemoryGame.Error
+                            }).disposed(by: self.disposeBag)
                     }
                     
                     it("should return invalidJSON error") {
@@ -84,12 +81,10 @@ class GatewayTests: QuickSpec {
                         
                         // Make the call
                         gateway
-                            .call(url: URL(string: "http://mock")!, method: .get)
-                            .startWithResult { (result: Result<JSON, SoundCloudMemoryGame.Error>) in
-                                if case let .failure(error) = result {
-                                    responseError = error
-                                }
-                        }
+                            .callJSON(url: URL(string: "http://mock")!, method: .get)
+                            .subscribe(onError: { (error: Swift.Error) -> Void in
+                                responseError = error as? SoundCloudMemoryGame.Error
+                            }).disposed(by: self.disposeBag)
                     }
                     
                     it("should return the error") {
@@ -108,20 +103,19 @@ class GatewayTests: QuickSpec {
                         
                         // Make the call
                         gateway
-                            .call(url: URL(string: "http://mock")!, method: .get)
-                            .startWithResult { (result: Result<JSON, SoundCloudMemoryGame.Error>) in
-                                if case let .failure(error) = result {
-                                    responseError = error
-                                }
-                        }
+                            .callJSON(url: URL(string: "http://mock")!, method: .get)
+                            .subscribe(onError: { (error: Swift.Error) -> Void in
+                                responseError = (error as! SoundCloudMemoryGame.Error)
+                            }).disposed(by: self.disposeBag)
                     }
                     
                     it("should return unknown error") {
                         expect(responseError).toEventually(equal(SoundCloudMemoryGame.Error.gateway(.unknown)))
                     }
                 }
-
             }
         }
     }
+    
+    lazy var disposeBag: DisposeBag! = DisposeBag()
 }

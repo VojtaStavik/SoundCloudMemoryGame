@@ -2,7 +2,7 @@
 @testable import SoundCloudMemoryGame
 
 import Foundation
-import ReactiveSwift
+import RxSwift
 
 class GameMock: Game {
     
@@ -22,11 +22,9 @@ class GameMock: Game {
         flippedCardCalledWithIndex = (row, column)
     }
     
-    override var state: Property<State> {
-        return mockStateWrapper
+    override var state: Variable<State> {
+        return mockState
     }
     
-    private lazy var mockStateWrapper: Property<State> = Property(self.mockState)
-    
-    var mockState: MutableProperty<State> = MutableProperty(.regular)
+    var mockState: Variable<State> = Variable(.regular)
 }

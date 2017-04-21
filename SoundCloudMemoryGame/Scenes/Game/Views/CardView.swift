@@ -100,8 +100,4 @@ class CardView: UIView {
         
         return imageView
     }()
-    
-    deinit {
-        print("CardView deinit")
-    }
 }

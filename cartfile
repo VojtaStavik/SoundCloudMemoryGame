@@ -1,6 +1,5 @@
 # App
-github "ReactiveCocoa/ReactiveCocoa" ~> 5.0
-github "SwiftyJSON/SwiftyJSON" ~> 3.1
+github "ReactiveX/RxSwift" ~> 3.0
 
 # Tests
 github "Quick/Quick" ~> 1.1

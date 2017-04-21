@@ -1,6 +1,7 @@
 
 import UIKit
-import ReactiveSwift
+import RxSwift
+import RxCocoa
 
 class GameVM {
     
@@ -8,16 +9,15 @@ class GameVM {
 
     init(game: Game) {
         self.game = game
-        
+
         // Observe game state
-        let disposable = game.state.producer
-            .observe(on: UIScheduler())
-            .startWithValues { [unowned self] (state) in
+        game.state.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (state) in
                 if case .finished = state {
-                    self.gameFinishedClosure?()
+                    self?.gameFinishedClosure?()
                 }
-        }
-        disposables.add(disposable)
+            }).disposed(by: disposeBag)
     }
 
     var numberOfRows: Int {
@@ -35,16 +35,16 @@ class GameVM {
     
     /// Creates CardView for given index
     func cardView(at row: Int, column: Int) -> CardView {
+        
         let card = game.gamePlan[row][column]
         let cardView = CardView(image: card.image)
 
         card.matchAnimationClosure = { [weak cardView] in cardView?.animateMatch() }
         
-        // Bind card state updates
-        let disposable = card.state.producer
-            .take(during: cardView.reactive.lifetime)
-            .observe(on: UIScheduler())
-            .startWithValues { [weak cardView] (state) in
+        card.state.asObservable()
+            .observeOn(MainScheduler.instance)
+            .takeUntil(cardView.rx.deallocated)
+            .subscribe(onNext: { [weak cardView] (state) in
                 switch state {
                 case .regular:
                     cardView?.transitionToLogo()
@@ -52,9 +52,7 @@ class GameVM {
                 case .flipped:
                     cardView?.transitionToImage()
                 }
-        }
-        
-        disposables.add(disposable)
+            }).disposed(by: disposeBag)
         
         return cardView
     }
@@ -66,10 +64,6 @@ class GameVM {
     // MARK: --=== Private ==---
 
     private let game: Game
-    
-    private var disposables = CompositeDisposable()
-    
-    deinit {
-        disposables.dispose()
-    }
+
+    private lazy var disposeBag = DisposeBag()
 }

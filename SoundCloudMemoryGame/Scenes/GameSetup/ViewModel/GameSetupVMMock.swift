@@ -2,7 +2,7 @@
 @testable import SoundCloudMemoryGame
 
 import Foundation
-import ReactiveSwift
+import RxSwift
 
 class GameSetupVMMock: GameSetupVM {
     
@@ -10,11 +10,11 @@ class GameSetupVMMock: GameSetupVM {
         self.init(api: APIMock())
     }
     
-    override var state: Property<GameSetupVM.State> {
-        get { return Property(self.mockState) }
+    override var state: Variable<GameSetupVM.State> {
+        get { return mockState }
     }
     
-    let mockState: MutableProperty<State> = MutableProperty(.default)
+    let mockState: Variable<State> = Variable(.default)
     
     var prepareGameCalledWithNumber: Int?
     

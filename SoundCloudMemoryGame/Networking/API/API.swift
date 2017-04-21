@@ -1,24 +1,22 @@
 
 import Foundation
 import UIKit
-import ReactiveSwift
+import RxSwift
 import SwiftyJSON
-import Result
 
 protocol API {
     
     typealias ClientID = String
     
     init(gateway: Gateway, clientID: ClientID)
-    func getImagesURLs(count: Int) -> SignalProducer<[URL], Error>
-    func downloadImages(urls: [URL]) -> SignalProducer<ImageStore, Error>
+    func getImagesURLs(count: Int) -> Observable<[URL]>
+    func downloadImages(urls: [URL]) -> Observable<ImageStore>
 }
 
 extension API {
     /// Combined producer which downloads available iamges' URLs and prepare ImageStore with them
-    func fetchImageURLsAndPrepareImageStore(count: Int) -> SignalProducer<ImageStore, Error> {
-        return getImagesURLs(count: count)
-            .flatMap(.concat, transform: downloadImages)
+    func fetchImageURLsAndPrepareImageStore(count: Int) -> Observable<ImageStore> {
+        return getImagesURLs(count: count).flatMap(downloadImages)
     }
 }
 
@@ -33,25 +31,27 @@ struct SCAPI: API {
     }
     
     /// Fetches URLs of available images
-    func getImagesURLs(count: Int) -> SignalProducer<[URL], Error> {
+    func getImagesURLs(count: Int) -> Observable<[URL]> {
         return gateway
-            .call(url: soundCloudAPIURL, method: .get)
-            .attemptMap(parse(count))
+            .callJSON(url: soundCloudAPIURL, method: .get)
+            .map(parse(count))
     }
     
     /// Downloads images and creates a new ImageStore with them
-    func downloadImages(urls: [URL]) -> SignalProducer<ImageStore, Error> {
+    func downloadImages(urls: [URL]) -> Observable<ImageStore> {
         
         // No need to be super clever here, and introduce download queues etc. Let's
         // just download everything all together in parallel.
         
-        let singleImageDownloadProducers = urls.map(downloadImage)
-        let combinedProducer = SignalProducer<SignalProducer<ImageStore, Error>, Error>(singleImageDownloadProducers)
-        
-        return combinedProducer
-            .flatten(.concat)
-            .reduce(ImageStore(), Dictionary.merge)
-            .mapError { _ in return .api(.cantDownloadImages) }
+        let singleImageDownloadObservables = urls.map(downloadImage)
+
+        return Observable
+            .from(singleImageDownloadObservables)
+            .merge()
+            .reduce(ImageStore(), accumulator: ImageStore.merge)
+            .catchError({ (_) -> Observable<Dictionary<ImageID, UIImage>> in
+                throw Error.api(.cantDownloadImages)
+            })
     }
     
     // MARK: --=== Private ==---
@@ -65,15 +65,15 @@ struct SCAPI: API {
     
     
     /// Parses response JSON to array of image to <count> URLs
-    fileprivate func parse(_ count: Int) -> (JSON) -> Result<[URL], Error> {
-        return { (json: JSON) -> Result<[URL], Error> in
+    fileprivate func parse(_ count: Int) -> (JSON) throws -> [URL] {
+        return { (json: JSON) throws -> [URL] in
             
             // get array of tracks
             guard
                 let tracks = json["tracks"].array,
                 tracks.count >= count else
             {
-                return .failure(.api(.notEnoughImages))
+                throw Error.api(.notEnoughImages)
             }
             
             // try to get artwork_url for each track and convert it to <count> URLs
@@ -83,22 +83,22 @@ struct SCAPI: API {
                         .prefix(count)
 
             guard urls.count == count else {
-                return .failure(.api(.notEnoughImages))
+                throw Error.api(.notEnoughImages)
             }
             
-            return .success(Array(urls))
+            return Array(urls)
         }
     }
     
     /// Downloads a single image and creates a new ImageStore with it.
-    fileprivate func downloadImage(url: URL) -> SignalProducer<ImageStore, Error> {
+    fileprivate func downloadImage(url: URL) -> Observable<ImageStore> {
         return gateway
             .call(url: url, method: .get)
-            .attemptMap { (data) -> Result<ImageStore, Error> in
+            .map { (data) -> ImageStore in
                 if let image = UIImage(data: data) {
-                    return .success([ImageID(url.absoluteString): image])
+                    return [ImageID(url.absoluteString): image]
                 } else {
-                    return .failure(.api(.cantDownloadImages))
+                    throw Error.api(.cantDownloadImages)
                 }
             }
     }

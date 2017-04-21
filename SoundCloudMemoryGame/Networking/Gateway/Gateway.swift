@@ -1,27 +1,26 @@
 
 import Foundation
-import ReactiveSwift
+import RxSwift
 import SwiftyJSON
-import Result
 
 protocol Gateway {
     init(session: URLSessionProtocol)
-    func call(url: URL, method: GatewayMethod) -> SignalProducer<Data, Error>
+    func call(url: URL, method: GatewayMethod) -> Observable<Data>
 }
 
 extension Gateway {
     
     /// Convenience function witch tries to parse the returning data to JSON
-    func call(url: URL, method: GatewayMethod) -> SignalProducer<JSON, Error> {
+    func callJSON(url: URL, method: GatewayMethod) -> Observable<JSON> {
         return call(url: url, method: method)
-            .attemptMap { (data) -> Result<JSON, Error> in
+            .map { (data) -> JSON in
                 var error: NSError?
                 let json = JSON(data: data, error: &error)
                 
                 if error != nil{
-                    return .failure(.gateway(.invalidJSON))
+                    throw Error.gateway(.invalidJSON)
                 } else {
-                    return .success(json)
+                    return json
                 }
             }
     }
@@ -53,28 +52,36 @@ struct SCGateway: Gateway {
     }
     
     /// Executes call with provided URL and HTTP method.
-    func call(url: URL, method: GatewayMethod) -> SignalProducer<Data, Error> {
+    func call(url: URL, method: GatewayMethod) -> Observable<Data> {
         
-        return SignalProducer { (observer, _) in
+        return Observable.create { (observer) in
         
             var request = URLRequest(url: url)
             request.httpMethod = method.rawValue
+            request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
             
-            self.session.dataTask(with: request) { (data, _, error) in
+            let task = self.session.dataTask(with: request) { (data, _, error) in
+                
                 guard let data = data else {
                     if let description = error?.localizedDescription {
                         // Next step would be to provide custom, more friendly messages for the most common errors.
-                        observer.send(error: .gateway(.network(description: description)))
+                        observer.onError(Error.gateway(.network(description: description)))
                     } else {
-                        observer.send(error: .gateway(.unknown))
+                        observer.onError(Error.gateway(.unknown))
                     }
                     return
                 }
                 
-                observer.send(value: data)
-                observer.sendCompleted()
+                observer.onNext(data)
+                observer.onCompleted()
                 
-            }.resume()
+            }
+            
+            task.resume()
+            
+            return Disposables.create {
+                task.cancel()
+            }
         }
     }
 

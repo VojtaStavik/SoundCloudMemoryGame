@@ -1,13 +1,13 @@
 
 import UIKit.UIImage
-import ReactiveSwift
+import RxSwift
 
 /// The Card class represents a card in the game plan.
 class Card {
     
     // MARK: --=== Public ==---
     
-    lazy var state: Property<State> = Property(self._state)
+    var state: Variable<State> = Variable(.regular)
     
     enum State {
         case regular
@@ -23,15 +23,13 @@ class Card {
     let id: ImageID
     
     func flip() {
-        if case .regular = state.value {
-            _state.value = .flipped
-        }
+        guard isFlipped == false else { return }
+        state.value = .flipped
     }
     
     func reset() {
-        if case .flipped = state.value {
-            _state.value = .regular
-        }
+        guard isFlipped else { return }
+        state.value = .regular
     }
     
     func match() {
@@ -39,16 +37,6 @@ class Card {
     }
     
     var matchAnimationClosure: (() -> Void)? = nil
-    
-    
-    // MARK: --=== Private ==---
-    
-    fileprivate let _state: MutableProperty<State> = MutableProperty(.regular)
-    
-    deinit {
-//        var mutableSelf = self
-        print("Card deinit \(String(format: "%p", unsafeBitCast(self, to: Int.self)))")
-    }
 }
 
 extension Card {

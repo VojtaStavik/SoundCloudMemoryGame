@@ -5,6 +5,7 @@ import Foundation
 import Quick
 import Nimble
 import SwiftyJSON
+import RxSwift
 
 class APITests: QuickSpec {
 
@@ -22,12 +23,16 @@ class APITests: QuickSpec {
                 api = SCAPI(gateway: gateway, clientID: clientID)
             }
             
+            afterEach {
+                self.disposeBag = nil
+            }
+            
             // MARK: --=== getImagesURLs ==---
             
             describe("getImagesURLs") {
 
                 beforeEach {
-                    api.getImagesURLs(count: 1).start()
+                    api.getImagesURLs(count: 1).subscribe(onNext: { _ in }).disposed(by: self.disposeBag)
                 }
                 
                 it("should call Gateway with correct URL and client ID") {
@@ -41,11 +46,10 @@ class APITests: QuickSpec {
                     
                     beforeEach {
                         gateway.responseJSON = self.mockJSONResponse
-                        api.getImagesURLs(count: 4).startWithResult { (result) in
-                            if case let .success(urls) = result {
+                        api.getImagesURLs(count: 4)
+                            .subscribe(onNext: { (urls) in
                                 imageURLs = urls
-                            }
-                        }
+                            }).disposed(by: self.disposeBag)
                     }
                     
                     it("should return only 4 URLs") {
@@ -69,11 +73,11 @@ class APITests: QuickSpec {
                     
                     beforeEach {
                         gateway.responseJSON = self.mockJSONResponse
-                        api.getImagesURLs(count: 100).startWithResult { (result) in
-                            if case let .failure(error) = result {
-                                responseError = error
-                            }
-                        }
+                        api.getImagesURLs(count: 100)
+                            .subscribe(onError: { (error) in
+                                responseError = (error as! SoundCloudMemoryGame.Error)
+                            }).disposed(by: self.disposeBag)
+
                     }
                     
                     it("should return notEnoughImages error") {
@@ -88,11 +92,10 @@ class APITests: QuickSpec {
                     
                     beforeEach {
                         gateway.responseError = .gateway(.invalidJSON)
-                        api.getImagesURLs(count: 4).startWithResult { (result) in
-                            if case let .failure(error) = result {
-                                responseError = error
-                            }
-                        }
+                        api.getImagesURLs(count: 4)
+                            .subscribe(onError: { (error) in
+                                responseError = (error as! SoundCloudMemoryGame.Error)
+                            }).disposed(by: self.disposeBag)
                     }
                     
                     it("should propagate the error") {
@@ -115,11 +118,9 @@ class APITests: QuickSpec {
                     
                     // Make the call
                     api.downloadImages(urls: [URL(string: "first://")!, URL(string: "second://")!])
-                        .startWithResult { (result) in
-                            if case let .success(store) = result {
-                                imageStore = store
-                            }
-                        }
+                        .subscribe(onNext: { (store) in
+                            imageStore = store
+                        }).disposed(by: self.disposeBag)
                 }
                 
                 it("should call Gateway with correct URLs") {
@@ -146,11 +147,9 @@ class APITests: QuickSpec {
                         
                         // Make the call
                         api.downloadImages(urls: [URL(string: "first://")!, URL(string: "second://")!])
-                            .startWithResult { (result) in
-                                if case let .failure(error) = result {
-                                    responseError = error
-                                }
-                        }
+                            .subscribe(onError: { (error) in
+                                responseError = (error as! SoundCloudMemoryGame.Error)
+                            }).disposed(by: self.disposeBag)
                     }
                     
                     it("should return canDonwloadImage error") {
@@ -176,11 +175,9 @@ class APITests: QuickSpec {
                     
                     // Make the call
                     api.fetchImageURLsAndPrepareImageStore(count: 1)
-                        .startWithResult { (result) in
-                            if case let .success(store) = result {
-                                imageStore = store
-                            }
-                    }
+                        .subscribe(onNext: { (store) in
+                            imageStore = store
+                        }).disposed(by: self.disposeBag)
                 }
 
                 it("should create new ImageStore with 1 donwloaded image") {
@@ -206,6 +203,8 @@ class APITests: QuickSpec {
     lazy var mockImage2: UIImage = {
         return UIImage(named: "paul.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!
     }()
+    
+    lazy var disposeBag: DisposeBag! = DisposeBag()
 }
 
 extension UIImage {
