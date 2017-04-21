@@ -71,8 +71,11 @@ extension GameVC {
 extension GameVC {
     
     fileprivate func finishGame() {
-        UIAlertController.showAlert(with: "🎉 Completed! 🎉", message: "Great job ;-)", from: self) { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+        let title = NSLocalizedString("🎉 Completed! 🎉", comment: "Win alert title")
+        let message = NSLocalizedString("Great job ;-)", comment: "Win alert message")
+        
+        UIAlertController.showAlert(with: title, message: message, from: self) { [weak self] in
+            _ = self?.navigationController?.popViewController(animated: true)
         }
     }
 }

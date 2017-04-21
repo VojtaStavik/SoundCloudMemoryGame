@@ -13,8 +13,8 @@ class GameSetupVCTests: QuickSpec {
             
             struct GameSettingsMock: GameSettings {
                 let supportedGrids: [Grid] = [
-                    (columns: 2, rows: 4),
-                    (columns: 2, rows: 2),
+                    [2, 4],
+                    [2, 2]
                 ]
             }
             
@@ -75,8 +75,8 @@ class GameSetupVCTests: QuickSpec {
 
                 struct GameSettingsMock: GameSettings {
                     let supportedGrids: [Grid] = [
-                        (columns: 2, rows: 4),
-                        (columns: 2, rows: 2),
+                            [2, 4],
+                            [2, 2]
                         ]
                 }
                 
@@ -103,11 +103,11 @@ class GameSetupVCTests: QuickSpec {
                 
                 struct GameSettingsMock: GameSettings {
                     let supportedGrids: [Grid] = [
-                        (columns: 2, rows: 4),
-                        (columns: 2, rows: 2),
-                        (columns: 2, rows: 5),
-                        (columns: 2, rows: 6),
-                        ]
+                        [2, 4],
+                        [2, 2],
+                        [2, 5],
+                        [2, 6],
+                    ]
                 }
                 
                 var vm: GameSetupVMMock!

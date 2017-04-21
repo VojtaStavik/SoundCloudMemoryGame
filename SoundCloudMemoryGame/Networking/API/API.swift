@@ -4,10 +4,9 @@ import UIKit
 import RxSwift
 import SwiftyJSON
 
+typealias ClientID = String
+
 protocol API {
-    
-    typealias ClientID = String
-    
     init(gateway: Gateway, clientID: ClientID)
     func getImagesURLs(count: Int) -> Observable<[URL]>
     func downloadImages(urls: [URL]) -> Observable<ImageStore>
@@ -43,8 +42,11 @@ struct SCAPI: API {
         // No need to be super clever here, and introduce download queues etc. Let's
         // just download everything all together in parallel.
         
-        let singleImageDownloadObservables = urls.map(downloadImage)
-
+        let singleImageDownloadObservables = urls.map { self.downloadImage(url: $0) }
+        
+        // There's a bug in the compiler and the following syntax  is causing a memory leak.
+        // let singleImageDownloadObservables = urls.map(downloadImage)
+        
         return Observable
             .from(singleImageDownloadObservables)
             .merge()

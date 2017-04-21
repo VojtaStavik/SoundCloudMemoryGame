@@ -21,7 +21,7 @@ class GameTests: QuickSpec {
                 "3": UIImage(),
                 ]
             
-            let grid: Grid = (columns: 2, rows: 3)
+            let grid: Grid = [2, 3]
             
             beforeEach {
                 game = Game(imageStore: imageStore, grid: grid)
@@ -63,7 +63,7 @@ class GameTests: QuickSpec {
             
             let imageStore: ImageStore = [:]
             
-            let grid: Grid = (columns: 0, rows: 0)
+            let grid: Grid = [0, 0]
             
             beforeEach {
                 game = Game(imageStore: imageStore, grid: grid)

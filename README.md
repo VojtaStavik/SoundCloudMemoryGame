@@ -3,8 +3,8 @@
 ### Requirements
 
 - iOS 9.3+
-- Xcode 8.3+
-- Swift 3.1+
+- Xcode 8.2+
+- Swift 3.0+
 
 
 ### How to run the project
@@ -53,4 +53,4 @@ If you want to test the project for various system versions and devices, you can
 ```bash
 fastlane scan
 ```
-Please note, that you have to have the following simulators installed in the system: ["iPhone 6 (9.3)", "iPhone 6 Plus (9.3)", "iPhone 6 (10.3)", "iPhone 6 Plus (10.3)"].
+Please note, that you have to have the following simulators installed in the system: ["iPhone 6 (9.3)", "iPhone 6 Plus (9.3)", "iPhone 6 (10.2)", "iPhone 6 Plus (10.2)"].

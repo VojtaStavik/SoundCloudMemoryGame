@@ -1,6 +1,7 @@
 
 import Foundation
 import RxSwift
+import UIKit.UIImage
 
 class GameSetupVM {
     

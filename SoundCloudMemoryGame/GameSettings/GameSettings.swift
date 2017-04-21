@@ -2,7 +2,21 @@
 import Foundation
 
 typealias Games = [CardCount: Grid]
-typealias Grid = (columns: Int, rows: Int)
+
+struct Grid {
+    let columns: Int
+    let rows: Int
+}
+
+extension Grid: ExpressibleByArrayLiteral {
+    init(arrayLiteral elements: Int...) {
+        guard elements.count == 2 else {
+            fatalError("Grid has to have 2 coordinates.")
+        }
+        self = Grid(columns: elements[0], rows: elements[1])
+    }
+}
+
 typealias CardCount = Int
 
 /// GameSettings provides supported game configurations
@@ -24,9 +38,9 @@ extension GameSettings {
 /// Concrete implementation of GameSettings
 struct SCGameSettings: GameSettings {
     let supportedGrids: [Grid] = [
-        (columns: 2, rows: 2),
-        (columns: 2, rows: 3),
-        (columns: 4, rows: 3),
-        (columns: 4, rows: 4)
+        [2, 2],
+        [2, 3],
+        [4, 3],
+        [4, 4]
     ]
 }

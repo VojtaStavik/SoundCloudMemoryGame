@@ -1,5 +1,6 @@
 # App
 github "ReactiveX/RxSwift" ~> 3.0
+github "SwiftyJSON/SwiftyJSON"
 
 # Tests
 github "Quick/Quick" ~> 1.1

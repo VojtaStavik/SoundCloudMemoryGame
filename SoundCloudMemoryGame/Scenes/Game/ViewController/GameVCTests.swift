@@ -18,7 +18,7 @@ class GameVCTests: QuickSpec {
                 
                 beforeEach {
                     
-                    game = GameMock(imageStore: ["1": self.mockImage1, "2": self.mockImage2], grid: (columns: 2, rows: 2))
+                    game = GameMock(imageStore: ["1": self.mockImage1, "2": self.mockImage2], grid: [2, 2])
                     game.mockGamePlan = [
                         [Card(id: "1", image: self.mockImage1), Card(id: "1", image: self.mockImage1)],
                         [Card(id: "2", image: self.mockImage2), Card(id: "2", image: self.mockImage2)],

@@ -7,7 +7,7 @@ class MainAppFlow {
     
     // MARK: --=== Public ==---
     
-    init(window: UIWindow, apiClientID: API.ClientID) {
+    init(window: UIWindow, apiClientID: ClientID) {
         self.apiClientID = apiClientID
         
         self.window = window
@@ -37,7 +37,7 @@ class MainAppFlow {
     private let navigationController: UINavigationController
     
     private let gameSettings = SCGameSettings()
-    private let apiClientID: API.ClientID
+    private let apiClientID: ClientID
     
     
     // Step 1 - GameSetupVC

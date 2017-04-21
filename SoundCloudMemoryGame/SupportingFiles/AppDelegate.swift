@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // SoundCloudAPI client ID
-        guard let clientID = Bundle.main.infoDictionary?[InfoPListKey.scApiClientID] as? API.ClientID else {
+        guard let clientID = Bundle.main.infoDictionary?[InfoPListKey.scApiClientID] as? ClientID else {
             fatalError("Missing string value for \(InfoPListKey.scApiClientID) in the info.plist file.")
         }
         

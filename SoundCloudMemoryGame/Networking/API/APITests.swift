@@ -13,7 +13,7 @@ class APITests: QuickSpec {
         
         describe("SCAPI") {
             
-            let clientID: API.ClientID = "testID"
+            let clientID: ClientID = "testID"
             
             var api: API!
             var gateway: GatewayMock!
@@ -81,7 +81,7 @@ class APITests: QuickSpec {
                     }
                     
                     it("should return notEnoughImages error") {
-                        expect(responseError).toEventually(equal(.api(.notEnoughImages)))
+                        expect(responseError).toEventually(equal(SoundCloudMemoryGame.Error.api(.notEnoughImages)))
                     }
                 }
 
@@ -99,7 +99,7 @@ class APITests: QuickSpec {
                     }
                     
                     it("should propagate the error") {
-                        expect(responseError).toEventually(equal(.gateway(.invalidJSON)))
+                        expect(responseError).toEventually(equal(SoundCloudMemoryGame.Error.gateway(.invalidJSON)))
                     }
                 }
                 
@@ -153,7 +153,7 @@ class APITests: QuickSpec {
                     }
                     
                     it("should return canDonwloadImage error") {
-                        expect(responseError).toEventually(equal(.api(.cantDownloadImages)))
+                        expect(responseError).toEventually(equal(SoundCloudMemoryGame.Error.api(.cantDownloadImages)))
                     }
                 }
             }

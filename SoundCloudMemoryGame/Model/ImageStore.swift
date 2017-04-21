@@ -8,7 +8,7 @@ typealias ImageStore = Dictionary<ImageID, UIImage>
 typealias ImageID = String
 
 /// Convenience helper allowing us to do: reduce( ... , Dictionary.merge)
-extension Dictionary where Key == ImageID, Value == UIImage {
+extension Dictionary {
     /// All values and keyf from the right Dictionary are copied to the left one.
     static func merge (left: Dictionary<Key, Value>, right: Dictionary<Key, Value>) -> Dictionary<Key, Value> {
         var result = left
