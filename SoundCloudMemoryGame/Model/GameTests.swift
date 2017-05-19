@@ -11,7 +11,7 @@ class GameTests: QuickSpec {
         
         // MARK: --=== Game (basic functionality) ==---
         
-        describe("Game") {
+        fdescribe("Game for 2 cards") {
             
             var game: Game!
             
@@ -24,7 +24,7 @@ class GameTests: QuickSpec {
             let grid: Grid = [2, 3]
             
             beforeEach {
-                game = Game(imageStore: imageStore, grid: grid)
+                game = Game(imageStore: imageStore, grid: grid, numberOfMatches: 2)
             }
             
             it("should prepare gamePlan according to game settings") {
@@ -57,7 +57,7 @@ class GameTests: QuickSpec {
         
         // MARK: --=== Game logic ==---
         
-        describe("Game (game logic)") {
+        fdescribe("Game (game logic)") {
             
             var game: Game!
             
@@ -66,7 +66,7 @@ class GameTests: QuickSpec {
             let grid: Grid = [0, 0]
             
             beforeEach {
-                game = Game(imageStore: imageStore, grid: grid)
+                game = Game(imageStore: imageStore, grid: grid, numberOfMatches: 2)
 
                 // We inject artificial gamePlan so we have full control
                 game.gamePlan = [
@@ -90,17 +90,13 @@ class GameTests: QuickSpec {
                 }
                 
                 it("should update game state to moveInProgress") {
-                    expect(game.state.value) == Game.State.moveInProgress(previous: game.gamePlan[0][0])
+                    expect(game.state.value) == Game.State.moveInProgress(previous: [game.gamePlan[0][0]])
                 }
                 
                 context("and not matching card is selected") {
                     
                     beforeEach {
                         game.flipCard(row: 1, column: 0)
-                    }
-                    
-                    it("should update game state to resolving") {
-                        expect(game.state.value).toEventually(equal(Game.State.resolving))
                     }
                     
                     it("should eventually update game state to regular") {
@@ -132,10 +128,6 @@ class GameTests: QuickSpec {
                     beforeEach {
                         // Flip the card
                         game.flipCard(row: 0, column: 1)
-                    }
-                    
-                    it("should update game state to resolving") {
-                        expect(game.state.value).toEventually(equal(Game.State.resolving))
                     }
                     
                     it("should eventually update game state to regular") {
@@ -171,10 +163,6 @@ class GameTests: QuickSpec {
                     
                     beforeEach {
                         game.flipCard(row: 1, column: 1)
-                    }
-                    
-                    it("should update game state to resolving") {
-                        expect(game.state.value).toEventually(equal(Game.State.resolving))
                     }
                     
                     it("should eventually update game state to finished") {

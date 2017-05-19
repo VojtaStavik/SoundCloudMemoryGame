@@ -53,7 +53,7 @@ class MainAppFlow {
         }
 
         let vc = createGameVC()
-        let game = Game(imageStore: imageStore, grid: grid)
+        let game = Game(imageStore: imageStore, grid: grid, numberOfMatches: 2)
         vc.viewModel = GameVM(game: game)
 
         navigationController.pushViewController(vc, animated: true)

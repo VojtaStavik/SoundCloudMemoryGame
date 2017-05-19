@@ -5,13 +5,14 @@ import RxSwift
 /// The Game class completely handles the game logic.
 class Game {
     
-    init(imageStore: ImageStore, grid: Grid) {
+    init(imageStore: ImageStore, grid: Grid, numberOfMatches: Int = 2) {
         if imageStore.count * 2 != grid.columns * grid.rows {
             fatalError("Grid \(grid) doesn't fit provided number of images: \(imageStore.keys.count)")
         }
         
         self.imageStore = imageStore
         self.grid = grid
+        self.numberOfMatches = numberOfMatches
     }
     
     let grid: Grid
@@ -19,14 +20,18 @@ class Game {
     /// GamePlan of the current game
     lazy var gamePlan: [[Card]] = {
         
-        var allImages: [(ImageID, UIImage)] = []
+        var images: [(ImageID, UIImage)] = []
         
         for (id, image) in self.imageStore {
-            allImages.append((id, image))
+            images.append((id, image))
         }
         
-        // We need to duplicate the array to get 2 images for each original image
-        allImages += allImages
+        var allImages: [(ImageID, UIImage)] = []
+        // We need to duplicate the array to get <numberOfMatches> images for each original image
+        for _ in 0..<self.numberOfMatches {
+            allImages += images
+        }
+        
         
         // Shuffle images in the array
         allImages.shuffle()
@@ -54,8 +59,8 @@ class Game {
     
     enum State {
         case regular
-        case moveInProgress(previous: Card)
-        case resolving
+        case moveInProgress(previous: [Card])
+        //case resolving
         case finished
     }
     
@@ -64,43 +69,46 @@ class Game {
     
     private let imageStore: ImageStore
     
+    private let numberOfMatches: Int
+    
     private func updateState(with card: Card) {
         switch state.value {
         case .regular:
             card.flip()
-            state.value = .moveInProgress(previous: card)
+            state.value = .moveInProgress(previous: [card])
             
-        case .moveInProgress(previous: let previousCard):
+        case let .moveInProgress(previous: previousCards):
+            guard let referenceCard = previousCards.first else {
+                fatalError("Previous card array is empty!")
+            }
+
             card.flip()
-            state.value  = .resolving
-            resolveMatch(card1: previousCard, card2: card)
             
+            if referenceCard.matches(card) {
+                if previousCards.count + 1 == numberOfMatches {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + AnimationTime.match) {
+                        self.checkIfFinished()
+                    }
+
+                } else {
+                    state.value = .moveInProgress(previous: previousCards + [card])
+                }
+                
+            } else {
+                let duration: TimeInterval = AnimationTime.flip + AnimationTime.notMatch
+                DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+                    self.resetMove(cards: previousCards + [card])
+                }
+            }
+
         default:
             // Ignore flip in other states
             break
         }
     }
     
-    private func resolveMatch(card1: Card, card2: Card) {
-        
-        if card1.matches(card2) {
-            card1.match()
-            card2.match()
-            DispatchQueue.main.asyncAfter(deadline: .now() + AnimationTime.match) {
-                self.checkIfFinished()
-            }
-            
-        } else {
-            let duration: TimeInterval = AnimationTime.flip + AnimationTime.notMatch
-            DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-                self.resetCards(card1: card1, card2: card2)
-            }
-        }
-    }
-    
-    private func resetCards(card1: Card, card2: Card) {
-        card1.reset()
-        card2.reset()
+    private func resetMove(cards: [Card]) {
+        cards.forEach { $0.reset() }
         state.value  = .regular
     }
     
@@ -121,12 +129,11 @@ extension Game.State: Equatable {
     static func == (l: Game.State, r: Game.State) -> Bool {
         switch (l, r) {
         case (.regular, .regular),
-             (.finished, .finished),
-             (.resolving, .resolving):
+             (.finished, .finished):
             return true
             
         case let (.moveInProgress(leftCard), .moveInProgress(rightCard)):
-            return leftCard === rightCard
+            return leftCard == rightCard
             
         default:
             return false

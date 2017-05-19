@@ -7,7 +7,7 @@ import RxSwift
 class GameMock: Game {
     
     convenience init() {
-        self.init(imageStore: [:], grid: [0, 0])
+        self.init(imageStore: [:], grid: [0, 0], numberOfMatches: 2)
     }
     
     override var gamePlan: [[Card]] {

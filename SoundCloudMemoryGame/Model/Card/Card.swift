@@ -54,3 +54,9 @@ extension Card {
         return self.id == otherCard.id
     }
 }
+
+extension Card: Equatable {
+    static func ==(l: Card, r: Card) -> Bool {
+        return l.id == r.id && l.image === r.image
+    }
+}
